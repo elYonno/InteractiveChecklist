@@ -44,7 +44,8 @@ namespace Checklist
                 Margin = new Padding(3 + IDENT_PAD * identation, 3, 3, 3),
                 Anchor = AnchorStyles.Left | AnchorStyles.Top,
                 Font = new Font("Microsoft Sans Serif", 14),
-                TextAlign = ContentAlignment.MiddleLeft
+                TextAlign = ContentAlignment.MiddleLeft,
+                Dock = DockStyle.Fill
             };
 
             table.Controls.Add(challenge, 0, row);
@@ -110,11 +111,12 @@ namespace Checklist
 
     internal class CheckItem : Item
     {
-        public bool Optional { get; set; }
+        public bool Optional { get; set; } = false;
 
         public override void Draw(TableLayoutPanel table, Section section, ref int row, int identation = 0)
         {
             Label challenge = DrawChallenge(table, ref row, identation);
+
             if (Optional) challenge.ForeColor= Color.Gray;
 
             CheckBox response = new CheckBox
@@ -125,9 +127,11 @@ namespace Checklist
                 Margin = new Padding(3, 3, 3, 3),
                 Anchor = AnchorStyles.Right | AnchorStyles.Top,
                 Font = new Font("Microsoft Sans Serif", 14),
-                TextAlign = ContentAlignment.MiddleRight
+                TextAlign = ContentAlignment.MiddleRight,
+                Dock = DockStyle.Fill
             };
 
+            challenge.Click += (s, e) => response.Checked = !response.Checked;
             section.AddCheckBox(response, Optional);
 
             if (Optional) response.ForeColor = Color.Gray;
@@ -139,7 +143,7 @@ namespace Checklist
 
     internal class Information : Item
     {
-        public bool Instruction { get; set; }
+        public bool Instruction { get; set; } = false;
 
         public override void Draw(TableLayoutPanel table, Section section, ref int row, int identation = 0)
         {

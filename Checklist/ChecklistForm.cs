@@ -116,7 +116,8 @@ namespace Checklist
 
         private void BtnReset_Click(object sender, System.EventArgs e)
         {
-            selectedSection.SetChecked(false);
+            foreach (Section section in checklist.Sections)
+                section.SetChecked(false);
             sectionsControl.SelectedIndex = 0;
         }
     }
