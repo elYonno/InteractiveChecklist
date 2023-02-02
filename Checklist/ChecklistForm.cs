@@ -37,14 +37,21 @@ namespace Checklist
         {
             TabPage page = new TabPage(section.Name);
 
-            TableLayoutPanel table = new TableLayoutPanel();
-            table.AutoSize = true;
-            table.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            table.Dock = DockStyle.Top;
+            TableLayoutPanel table = new TableLayoutPanel
+            {
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                Dock = DockStyle.Top
+            };
 
             int row = 0;
             foreach (Item item in section.Items)
                 item.Draw(table, ref row);
+
+            foreach (RowStyle style in table.RowStyles)
+            {
+                style.SizeType = SizeType.AutoSize;
+            }
 
             page.Controls.Add(table);
 

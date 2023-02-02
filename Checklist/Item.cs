@@ -56,6 +56,24 @@ namespace Checklist
         {
             row++;
             DrawDescription(table, ref row, identation);
+
+            if (Response != null)
+            {
+                Label divider = new Label
+                {
+                    Text = new string('‾', 1000),
+                    Margin = new Padding(3 + IDENT_PAD * identation, 0, 3, 3),
+                    Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right,
+                    Font = new Font("Microsoft Sans Serif", 14),
+                    TextAlign = ContentAlignment.TopCenter,
+                    Dock = DockStyle.Top
+                };
+                table.Controls.Add(divider, 0, row);
+                table.SetColumnSpan(divider, 2);
+                
+                row++;
+            }
+
             DrawSubItems(table, ref row, identation);
         }
 
