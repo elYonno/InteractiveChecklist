@@ -11,4 +11,11 @@ namespace Checklist
         public string Name { get; set; }
         public List<Section> Sections { get; set; }
     }
+
+    internal class Section
+    {
+        public string Name { get; set; }
+        public bool Information { get; set; }
+        public List<Item> Items { get; set; }
+    }
 }

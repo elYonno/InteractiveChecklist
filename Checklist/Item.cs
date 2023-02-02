@@ -35,7 +35,7 @@ namespace Checklist
 
         public abstract void Draw(TableLayoutPanel table, ref int row, int identation = 0);
 
-        protected void DrawChallenge(TableLayoutPanel table, ref int row, int identation)
+        protected Label DrawChallenge(TableLayoutPanel table, ref int row, int identation)
         {
             Label challenge = new Label
             {
@@ -48,6 +48,8 @@ namespace Checklist
             };
 
             table.Controls.Add(challenge, 0, row);
+
+            return challenge;
         }
 
         protected void DrawNextRow(TableLayoutPanel table, ref int row, int identation)
@@ -61,13 +63,12 @@ namespace Checklist
         {
             if (Description != null)
             {
-                RichTextBox description = new RichTextBox
+                Label description = new Label
                 {
-                    ReadOnly = true,
-                    BorderStyle = BorderStyle.None,
-                    Enabled = false,
+                    MaximumSize = new Size(table.Width * 4, 0),
+                    AutoSize = true,
                     Text = Description,
-                    Margin = new Padding(3 + IDENT_PAD * identation, 3, 3, 3),
+                    Margin = new Padding(3 + IDENT_PAD * identation, 0, 3, 3),
                     Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right,
                     Font = new Font("Microsoft Sans Serif", 11),
                     ForeColor = Color.Gray
@@ -91,9 +92,12 @@ namespace Checklist
 
     internal class CheckItem : Item
     {
+        public bool Optional { get; set; }
+
         public override void Draw(TableLayoutPanel table, ref int row, int identation = 0)
         {
-            DrawChallenge(table, ref row, identation);
+            Label challenge = DrawChallenge(table, ref row, identation);
+            if (Optional) challenge.ForeColor= Color.Gray;
 
             Control response = new CheckBox
             {
@@ -103,8 +107,10 @@ namespace Checklist
                 Margin = new Padding(3, 3, 3, 3),
                 Anchor = AnchorStyles.Right | AnchorStyles.Top,
                 Font = new Font("Microsoft Sans Serif", 14),
-                TextAlign= ContentAlignment.MiddleRight
+                TextAlign = ContentAlignment.MiddleRight
             };
+
+            if (Optional) response.ForeColor = Color.Gray;
             table.Controls.Add(response, 1, row);
 
             DrawNextRow(table, ref row, identation);
@@ -113,20 +119,26 @@ namespace Checklist
 
     internal class Information : Item
     {
+        public bool Instruction { get; set; }
+
         public override void Draw(TableLayoutPanel table, ref int row, int identation = 0)
         {
-            DrawChallenge(table, ref row, identation);
+            Label label = DrawChallenge(table, ref row, identation);
+            if (Instruction) label.Font = new Font("Microsoft Sans Serif", 14, FontStyle.Bold);
 
-            Control response = new Label
+            if (Response != null)
             {
-                AutoSize = true,
-                Text = Response,
-                Margin = new Padding(3, 3, 3, 3),
-                Anchor = AnchorStyles.Right | AnchorStyles.Top,
-                Font = new Font("Microsoft Sans Serif", 14),
-                TextAlign = ContentAlignment.MiddleRight
-            };
-            table.Controls.Add(response, 1, row);
+                Control response = new Label
+                {
+                    AutoSize = true,
+                    Text = Response,
+                    Margin = new Padding(3, 3, 3, 3),
+                    Anchor = AnchorStyles.Right | AnchorStyles.Top,
+                    Font = new Font("Microsoft Sans Serif", 14),
+                    TextAlign = ContentAlignment.MiddleRight
+                };
+                table.Controls.Add(response, 1, row);
+            }
 
             DrawNextRow(table, ref row, identation);
         }

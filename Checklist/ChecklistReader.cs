@@ -16,7 +16,7 @@ namespace Checklist
     {
         Boeing738,
         AirbusA32NX,
-        AnalogKingair
+        AnalogKingAir
     }
 
     internal class ChecklistReader
@@ -32,7 +32,7 @@ namespace Checklist
                     break;
                 case AircraftType.AirbusA32NX:
                     return "";
-                case AircraftType.AnalogKingair:
+                case AircraftType.AnalogKingAir:
                     return "";
                 default:
                     return "";

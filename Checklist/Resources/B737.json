@@ -1,25 +1,403 @@
-{
+﻿{
   "Name": "Boeing 737-800",
   "Sections": [
     {
-      "Name" : "Performance",
+      "Name": "Performance",
+      "Information": true,
       "Items": [
         {
+          "Type": "Information",
+          "Challenge": "Based on ElectroxSoldier PMDG Boeing 737NG Checklist"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Seating",
+          "Response": "160-184"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Flight Ceiling",
+          "Response": "41,000 ft"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Range",
+          "Response": "3,115 nm"
+        },
+        {
           "Type": "Title",
-          "Challenge": "Performance",
+          "Challenge": "Weight Limitations"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Maximum Takeoff Weight",
+          "Response": "79,016 kg"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Maximum Landing Weight",
+          "Response": "66,361 kg"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Maximum Zero Fuel Weight",
+          "Response": "62,732 kg"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Maximum Fuel Capacity",
+          "Response": "20,894 kg"
+        }
+      ]
+    },
+    {
+      "Name": "Secure Cabin",
+      "Items": [
+        {
+          "Type": "Information",
+          "Challenge": "SKIP ON TURNAROUND",
+          "Instruction": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LANDING GEAR",
+          "Response": "DOWN"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "SPEED-BRAKE",
+          "Response": "DOWN"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLAPS",
+          "Response": "UP"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BATTERY",
+          "Response": "ON + COVERED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "STANDBY PWR",
+          "Response": "AUTO + COVERED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "DC-VOLTMETER-SLCTR",
+          "Response": "BAT",
+          "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AC-VOLTMETER-SLCTR",
+          "Response": "STBY PWR",
+          "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "MASTER CAUTION",
+          "Response": "DISENGAGE",
+          "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ELEC HYD PUMPS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FUEL PUMPS",
+          "Response": "ALL OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "INTERIOR LIGHTS",
+          "Response": "AS REQUIRED",
+          "Description": "PEDESTAL, MAIN PANEL, OVHD PANEL"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "CABIN/UTILITY POWER",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "IFE PASS SEAT POWER",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "GROUND POWER",
+          "Response": "CONNECT + ON",
+          "Description": "FMC → MENU → FS ACTIONS → GROUND SERVICES → GROUND → POWER REQUEST"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AC-VOLTMETER-SLCTR",
+          "Response": "GRND PWR"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "EMERGENCY LIGHTS",
+          "Response": "ARMED + COVERED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "SEAT-BELTS",
+          "Response": "AUTO/ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "POSITION LIGHTS",
+          "Response": "STEADY"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "WHEEL WELL, LOGO, WING",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "COCKPIT LIGHTS",
+          "Response": "TEST",
+          "DESCRIPTION": "MASTER, AP DISCONNECT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ALARMS",
+          "Response": "TEST",
+          "Description": "ENGINE/APU FIRE, CARGO FIRE, MACH OVERSPEED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "OXYGEN MASKS",
+          "Response": "TEST"
+        }
+      ]
+    },
+    {
+      "Name": "Boarding",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "START BOARDING + FUELING",
+          "Response": "START",
+          "Description": "FMC → FS ACTIONS → GROUND SERVICES"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TRIM AIR",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RECIRC. FANS",
+          "Response": "AUTO"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PACKS",
+          "Response": "AUTO"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTOPILOTS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "IRS SELECTORS",
+          "Response": "NAV"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "FMC",
           "SubItems": [
             {
-              "Type": "Information",
-              "Challenge": "Maximum Taxi Weight",
-              "Response": "70,760 kg",
-              "Description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+              "Type": "CheckItem",
+              "Challenge": "INIT REF PAGE",
+              "Response": "COMPLETED"
             },
             {
-              "Type": "Information",
-              "Challenge": "Maximum Takeoff Weight",
-              "Response": "70,533 kg"
+              "Type": "CheckItem",
+              "Challenge": "ROUTE",
+              "Response": "COMPLETED"
             }
           ]
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FUEL PUMP FWD NO. 1",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU",
+          "Response": "START"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU GEN SWITCHES",
+          "Response": "ON",
+          "Description": "WHEN APU GEN OFF LIGHT IS ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU + ENGINE BLEEDS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AC-VOLTMETER-SLCTR",
+          "Response": "APU",
+          "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "MASTER CAUTION",
+          "Response": "DISENGAGE",
+          "Optional": true
+        }
+      ]
+    },
+    {
+      "Name": "Boarding Complete",
+      "Items": [
+        {
+          "Type": "Information",
+          "Challenge": "REQUEST ATC CLEARANCE",
+          "Instruction": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "SQUAWK",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ALTIMETER",
+          "Response": "SET"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "FMC",
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "PERF INIT",
+              "Response": "COMPLETED"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "DEPARTURE",
+              "Response": "COMPLETED"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "LEGS",
+              "Response": "NO DISCONTINUITIES"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "TAKE OFF",
+              "Response": "COMPLETED"
+            }
+          ]
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "INITIAL ALT",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "HDG / TAKEOFF RWY",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ELEVATOR TRIM",
+          "Response": "SET (FMC DATA)"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "IAS / MACH SPEED",
+          "Response": "SET V2 SPEED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "YAW DAMPER",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FUEL PUMPS",
+          "Response": "ALL (USABLE) ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "CROSS FEED VALVE",
+          "Response": "TEST",
+          "Description": "BLUE LIGHT SHINE AND THEN DIM, THEN SWITCH THE CROSSFEED OFF AGAIN"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "WINDOW HEAT",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "WING + ENG ANTI-ICE",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "HYDRAULIC PUMPS",
+          "Response": "ALL ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLIGHT ALTITUDE",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LANDING ALTITUDE",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLIGHT DIRECTORS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LNAV",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "VNAV",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTO BRAKE",
+          "Response": "RTO"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "GROUND CONNECTIONS",
+          "Response": "REMOVE ALL",
+          "Description": "FMC → FS ACTIONS → GROUND SERVICES"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "DOORS",
+          "Response": "CLOSED",
+          "Description": "CHECK OVHD PANEL"
         }
       ]
     }
