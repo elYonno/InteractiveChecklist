@@ -10,16 +10,9 @@ using System.Windows.Forms;
 
 namespace Checklist
 {
-    public enum Checklist
-    {
-        Boeing738,
-        AirbusA32NX,
-        AnalogKingair
-    }
-
     public partial class Main : Form
     {
-        private Form checklist;
+        private ChecklistForm checklist;
 
         public Main()
         {
@@ -44,17 +37,15 @@ namespace Checklist
                 if (sender is Button)
                 {
                     Button btn = (Button)sender;
+                    int tag = int.Parse(btn.Tag.ToString());
 
-                    switch (int.Parse(btn.Tag.ToString()))
+                    if (Enum.IsDefined(typeof(AircraftType), tag))
                     {
-                        case (int)Checklist.Boeing738:
-                            checklist = new Checklist738();
-                            break;
-                        default:
-                            throw new Exception("Unkown checklist");
+                        checklist = new ChecklistForm((AircraftType) tag);
+                        checklist.Show();
                     }
-
-                    checklist.Show();
+                    else
+                        throw new Exception("Unkown checklist.");
                 }
                 else
                     throw new Exception("Unknown event sender.");

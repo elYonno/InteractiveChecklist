@@ -1,0 +1,20 @@
+{
+  "Name": "Boeing 737-800",
+  "Sections": [
+    {
+      "Name" : "Performance",
+      "Items": [
+        {
+          "Challenge": "Maximum Taxi Weight",
+          "Response": "70,760 kg",
+          "CheckItem": false
+        },
+        {
+          "Challenge": "Maximum Takeoff Weight",
+          "Response": "70,533 kg",
+          "CheckItem": false
+        }
+      ]
+    }
+  ]
+}
