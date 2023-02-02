@@ -24,6 +24,8 @@ namespace Checklist
 
     internal abstract class Item
     {
+        public static readonly int IDENT_PAD = 30;
+
         [JsonConverter(typeof(StringEnumConverter))]
         public ItemType Type { get; set; }
         public string Challenge { get; set; }
@@ -31,15 +33,15 @@ namespace Checklist
         public string Description { get; set; }
         public List<Item> SubItems { get; set; }
 
-        public abstract void Draw(TableLayoutPanel table, ref int row);
+        public abstract void Draw(TableLayoutPanel table, ref int row, int identation = 0);
 
-        protected void DrawChallenge(TableLayoutPanel table, ref int row)
+        protected void DrawChallenge(TableLayoutPanel table, ref int row, int identation)
         {
             Label challenge = new Label
             {
                 AutoSize = true,
                 Text = Challenge,
-                Margin = new Padding(3, 3, 3, 3),
+                Margin = new Padding(3 + IDENT_PAD * identation, 3, 3, 3),
                 Anchor = AnchorStyles.Left | AnchorStyles.Top,
                 Font = new Font("Microsoft Sans Serif", 14),
                 TextAlign = ContentAlignment.MiddleLeft
@@ -48,14 +50,14 @@ namespace Checklist
             table.Controls.Add(challenge, 0, row);
         }
 
-        protected void DrawNextRow(TableLayoutPanel table, ref int row)
+        protected void DrawNextRow(TableLayoutPanel table, ref int row, int identation)
         {
             row++;
-            DrawDescription(table, ref row);
-            DrawSubItems(table, ref row);
+            DrawDescription(table, ref row, identation);
+            DrawSubItems(table, ref row, identation);
         }
 
-        private void DrawDescription(TableLayoutPanel table, ref int row)
+        private void DrawDescription(TableLayoutPanel table, ref int row, int identation)
         {
             if (Description != null)
             {
@@ -65,7 +67,7 @@ namespace Checklist
                     BorderStyle = BorderStyle.None,
                     Enabled = false,
                     Text = Description,
-                    Margin = new Padding(3, 3, 3, 3),
+                    Margin = new Padding(3 + IDENT_PAD * identation, 3, 3, 3),
                     Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right,
                     Font = new Font("Microsoft Sans Serif", 11),
                     ForeColor = Color.Gray
@@ -77,17 +79,21 @@ namespace Checklist
             }
         }
 
-        private void DrawSubItems(TableLayoutPanel table, ref int row)
+        private void DrawSubItems(TableLayoutPanel table, ref int row, int identation)
         {
-
+            if (SubItems != null)
+            {
+                foreach (var subItem in SubItems)
+                    subItem.Draw(table, ref row, identation + 1);
+            }
         }
     }
 
     internal class CheckItem : Item
     {
-        public override void Draw(TableLayoutPanel table, ref int row)
+        public override void Draw(TableLayoutPanel table, ref int row, int identation = 0)
         {
-            DrawChallenge(table, ref row);
+            DrawChallenge(table, ref row, identation);
 
             Control response = new CheckBox
             {
@@ -101,15 +107,15 @@ namespace Checklist
             };
             table.Controls.Add(response, 1, row);
 
-            DrawNextRow(table, ref row);
+            DrawNextRow(table, ref row, identation);
         }
     }
 
     internal class Information : Item
     {
-        public override void Draw(TableLayoutPanel table, ref int row)
+        public override void Draw(TableLayoutPanel table, ref int row, int identation = 0)
         {
-            DrawChallenge(table, ref row);
+            DrawChallenge(table, ref row, identation);
 
             Control response = new Label
             {
@@ -122,13 +128,13 @@ namespace Checklist
             };
             table.Controls.Add(response, 1, row);
 
-            DrawNextRow(table, ref row);
+            DrawNextRow(table, ref row, identation);
         }
     }
 
     internal class Title : Item
     {
-        public override void Draw(TableLayoutPanel table, ref int row)
+        public override void Draw(TableLayoutPanel table, ref int row, int identation = 0)
         {
             Control title = new Label
             {
@@ -142,7 +148,7 @@ namespace Checklist
             table.Controls.Add(title, 0, row);
             table.SetColumnSpan(title, 2);
 
-            DrawNextRow(table, ref row);
+            DrawNextRow(table, ref row, identation);
         }
     }
 }

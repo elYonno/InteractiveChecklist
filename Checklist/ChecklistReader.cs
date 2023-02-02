@@ -44,7 +44,6 @@ namespace Checklist
         public static Checklist readChecklist(AircraftType type)
         {
             string resource = getResource(type);
-            Debug.WriteLine(resource);
 
             Checklist checklist = JsonConvert.DeserializeObject<Checklist>(resource,
                 new ItemConverter());
