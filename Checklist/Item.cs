@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Checklist
 {
-    internal enum ItemType
+    public enum ItemType
     {
         [EnumMember(Value = "CheckItem")]
         CheckItem,
@@ -20,50 +20,6 @@ namespace Checklist
         Title,
         [EnumMember(Value = "Information")]
         Information
-    }
-
-    /// <summary>
-    /// Converts class Item into their respective subclass.
-    /// If able to update to .NET 7, use the new Json convert implementation.
-    /// </summary>
-    public class ItemConverter : JsonConverter
-    {
-        public override bool CanConvert(Type objectType)
-        {
-            return typeof(Item).IsAssignableFrom(objectType);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType,
-            object existingValue, JsonSerializer serializer)
-        {
-            JObject j = JObject.Load(reader);
-
-            ItemType type = (ItemType) Enum.Parse(typeof(ItemType), (string)j["Type"]);
-            Item item;
-
-            switch (type)
-            {
-                case ItemType.CheckItem:
-                    item = new CheckItem();
-                    break;
-                case ItemType.Title:
-                    item = new Title();
-                    break;
-                case ItemType.Information:
-                    item = new Information();
-                    break;
-                default:
-                    throw new ArgumentException();
-            }
-
-            serializer.Populate(j.CreateReader(), item);
-            return item;
-        }
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     internal abstract class Item
@@ -91,6 +47,40 @@ namespace Checklist
 
             table.Controls.Add(challenge, 0, row);
         }
+
+        protected void DrawNextRow(TableLayoutPanel table, ref int row)
+        {
+            row++;
+            DrawDescription(table, ref row);
+            DrawSubItems(table, ref row);
+        }
+
+        private void DrawDescription(TableLayoutPanel table, ref int row)
+        {
+            if (Description != null)
+            {
+                RichTextBox description = new RichTextBox
+                {
+                    ReadOnly = true,
+                    BorderStyle = BorderStyle.None,
+                    Enabled = false,
+                    Text = Description,
+                    Margin = new Padding(3, 3, 3, 3),
+                    Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right,
+                    Font = new Font("Microsoft Sans Serif", 11),
+                    ForeColor = Color.Gray
+                };
+
+                table.Controls.Add(description, 0, row);
+                table.SetColumnSpan(description, 2);
+                row++;
+            }
+        }
+
+        private void DrawSubItems(TableLayoutPanel table, ref int row)
+        {
+
+        }
     }
 
     internal class CheckItem : Item
@@ -111,7 +101,7 @@ namespace Checklist
             };
             table.Controls.Add(response, 1, row);
 
-            row++;
+            DrawNextRow(table, ref row);
         }
     }
 
@@ -132,7 +122,7 @@ namespace Checklist
             };
             table.Controls.Add(response, 1, row);
 
-            row++;
+            DrawNextRow(table, ref row);
         }
     }
 
@@ -152,7 +142,7 @@ namespace Checklist
             table.Controls.Add(title, 0, row);
             table.SetColumnSpan(title, 2);
 
-            row++;
+            DrawNextRow(table, ref row);
         }
     }
 }

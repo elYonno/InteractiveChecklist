@@ -7,6 +7,11 @@ namespace Checklist
     {
         private Checklist checklist;
 
+        /// <summary>
+        /// Populate the form with the whole checklist depending on the aircraft type.
+        /// Will read from the Json deserializer in ChecklistReader.
+        /// </summary>
+        /// <param name="type">Type of aircraft</param>
         public ChecklistForm(AircraftType type = AircraftType.Boeing738)
         {
             InitializeComponent();
@@ -24,6 +29,10 @@ namespace Checklist
             }
         }
 
+        /// <summary>
+        /// Adds a tab page to the TabControl and populate it with the items from that section.
+        /// </summary>
+        /// <param name="section">Section to be populated.</param>
         private void createSection(Section section)
         {
             TabPage page = new TabPage(section.Name);
