@@ -22,7 +22,6 @@ namespace Checklist
     {
         public static string getResource(AircraftType type)
         {
-            var assembly = Assembly.GetExecutingAssembly();
             string resourceName;
 
             switch (type)
@@ -46,7 +45,8 @@ namespace Checklist
             string resource = getResource(type);
             Debug.WriteLine(resource);
 
-            Checklist checklist = JsonConvert.DeserializeObject<Checklist>(resource);
+            Checklist checklist = JsonConvert.DeserializeObject<Checklist>(resource,
+                new ItemConverter());
 
             return checklist;
         }

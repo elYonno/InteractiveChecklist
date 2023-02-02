@@ -35,9 +35,7 @@ namespace Checklist
 
             int row = 0;
             foreach (Item item in section.Items)
-            {
-                createItem(table, item, ref row);
-            }
+                item.Draw(table, ref row);
 
             page.Controls.Add(table);
 
@@ -48,48 +46,6 @@ namespace Checklist
             page.AutoScroll = true;
 
             sectionsControl.TabPages.Add(page);
-        }
-
-        private void createItem(TableLayoutPanel table, Item item, ref int row)
-        {
-            Label challenge = new Label
-            {
-                AutoSize = true,
-                Text = item.Challenge,
-                Margin = new Padding(3, 3, 3, 3),
-                Anchor = AnchorStyles.Left | AnchorStyles.Top,
-                Font = new Font("Microsoft Sans Serif", 14)
-            };
-
-            table.Controls.Add(challenge, 0, row);
-
-            Control response;
-            if (item.CheckItem)
-            {
-                response = new CheckBox
-                {
-                    AutoSize = true,
-                    CheckAlign = ContentAlignment.MiddleRight,
-                    Text = item.Response,
-                    Margin = new Padding(3, 3, 3, 3),
-                    Anchor = AnchorStyles.Right | AnchorStyles.Top,
-                    Font = new Font("Microsoft Sans Serif", 14)
-                };
-            }
-            else
-            {
-                response = new Label
-                {
-                    AutoSize = true,
-                    Text = item.Response,
-                    Margin = new Padding(3, 3, 3, 3),
-                    Anchor = AnchorStyles.Right | AnchorStyles.Top,
-                    Font = new Font("Microsoft Sans Serif", 14)
-                };
-            }
-            table.Controls.Add(response, 1, row);
-
-            row++;
         }
     }
 }
