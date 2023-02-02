@@ -140,7 +140,7 @@
         },
         {
           "Type": "CheckItem",
-          "Challenge": "EMERGENCY LIGHTS",
+          "Challenge": "EMERGENCY EXIT LIGHTS",
           "Response": "ARMED + COVERED"
         },
         {
@@ -155,7 +155,12 @@
         },
         {
           "Type": "CheckItem",
-          "Challenge": "WHEEL WELL, LOGO, WING",
+          "Challenge": "LOGO LIGHTS",
+          "Response": "AS REQUIRED / ON AT NIGHT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "WHEEL WELL, WING",
           "Response": "AS REQUIRED"
         },
         {
@@ -168,7 +173,7 @@
           "Type": "CheckItem",
           "Challenge": "ALARMS",
           "Response": "TEST",
-          "Description": "ENGINE/APU FIRE, CARGO FIRE, MACH OVERSPEED"
+          "Description": "ENGINE/APU FIRE, CARGO FIRE, MACH OVERSPEED, GPWS"
         },
         {
           "Type": "CheckItem",
@@ -398,6 +403,1011 @@
           "Challenge": "DOORS",
           "Response": "CLOSED",
           "Description": "CHECK OVHD PANEL"
+        }
+      ]
+    },
+    {
+      "Name": "Before Start",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "WING + WHEEL WELL LIGHTS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "STALL WARNING",
+          "Response": "TEST"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PARKING BRAKE",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "CHOCKS",
+          "Response": "REMOVED",
+          "Description": "FMC → MENU → FS ACTIONS → GROUND SERVICES → CHOCKS REMOVED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TAKE OFF BRIEFING",
+          "Response": "REVIEWED",
+          "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PACKS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ANTI COLLISION LIGHT",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TRANSPONDER",
+          "Response": "ALT OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE AREA",
+          "Response": "CLEAR"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LOWER DISPLAY UNIT",
+          "Response": "ENGINE"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "REQUEST PUSH AND START",
+          "Instruction": true
+        }
+      ]
+    },
+    {
+      "Name": "Engine Start",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "PUSBACK",
+          "Response": "START"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "DUCT PRESSURE GAUGE",
+          "Response": "VERIFY 30 PSI"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "IGNITION SELECTOR",
+          "Response": "SWITCH TO OPPOSITE"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "R ENGINE START SWITCH",
+          "Response": "GRD",
+          "Description": "WAIT FOR AT LEAST 25% N2"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "R ENGINE FUEL CTRL",
+          "Response": "IDLE",
+          "Description": "WAIT FOR AT LEAST 25% N2, WATCH EGT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "R ENGINE START SWITCH",
+          "Response": "CONT",
+          "Description": "WAIT UNTIL START SWITCH KICKS BACK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "L ENGINE START SWITCH",
+          "Response": "GRD"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "L ENGINE FUEL CTRL",
+          "Response": "IDLE",
+          "Description": "WAIT FOR AT LEAST 25% N2, WATCH EGT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "L ENGINE START SWITCH",
+          "Response": "CONT",
+          "Description": "WAIT UNTIL START SWITCH KICKS BACK"
+        }
+      ]
+    },
+    {
+      "Name": "Before Taxi",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "GEN ENGINE SWITCHES",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AC-VOLTMETER-SLCTR",
+          "Response": "GEN 1",
+          "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU BLEED",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PACKS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ISOLATION VALVE",
+          "Response": "AUTO"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PROBE HEAT",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE ANTI-ICE",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLAPS",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TRIM",
+          "Response": "VERIFY"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLIGHT CONTROLS",
+          "Response": "FREE AND CORRECT",
+          "Description": "CHECK WITH SYS PAGE. ELEVATOR + AILERIONS + RUDDER"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RECALL",
+          "Response": "CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LOWER DISPLAY UNIT",
+          "Response": "OFF",
+          "Optional": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "REQUEST TAXI CLEARANCE",
+          "Instruction": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TAXI LIGHTS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RWY TURNOFF LIGHTS",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TCAS",
+          "Response": "TEST"
+        }
+      ]
+    },
+    {
+      "Name": "Taxi To Dep.",
+      "Items": [
+        {
+          "Type": "Information",
+          "Challenge": "TAXI SPEEDS",
+          "SubItems": [
+            {
+              "Type": "Information",
+              "Challenge": "15 KNOTS AT APRON"
+            },
+            {
+              "Type": "Information",
+              "Challenge": "30 KNOTS ON TAXIWAY"
+            },
+            {
+              "Type": "Information",
+              "Challenge": "50 KNOTS ON RUNWAY"
+            }
+          ]
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TAKEOFF CONFIG",
+          "Response": "CHECK NO HORN"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BRKS/GYRO/TURN COORDINATOR",
+          "Response": "CHECK DURING TAXI"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "APPROACHING RUNWAY",
+          "Instruction": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTOTHROTTLE",
+          "Response": "ARM"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ANTI-ICE",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLIGHT INSTRUMENTS",
+          "Response": "CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE INSTRUMENTS",
+          "Response": "CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BRAKE TEMP",
+          "Response": "CHECK",
+          "Description": "SYS PAGE"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TAKE-OFF DATA",
+          "Response": "(V1, VR, V2) CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "NAV EQUIPMENT",
+          "Response": "CHECK"
+        }
+      ]
+    },
+    {
+      "Name": "Before Takeoff",
+      "Items": [
+        {
+          "Type": "Information",
+          "Challenge": "WAIT FOR TAKEOFF CLEARANCE",
+          "Instruction": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LANDING LIGHTS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RWY TURN OFF LIGHTS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TAXI LIGHTS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "POSITION LIGHTS",
+          "Response": "STROBE + STEADY"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TRANSPONDER",
+          "Response": "TA/RA"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TFC",
+          "Response": "PUSH ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "CLOCK ET",
+          "Response": "START"
+        }
+      ]
+    },
+    {
+      "Name": "After Takeoff",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "POSITIVE RATE",
+          "Response": "GEAR UP"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTO BRAKE",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE START SWITCHES",
+          "Response": "OFF / AS REQUIRED",
+          "Description": "ON WITH PRECIPITATION/VISIBLE MOISTURE"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LANDING GEAR LEVER",
+          "Response": "OFF",
+          "Description": "3 UNLIT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLAPS",
+          "Response": "RAISE ON SCHEDULE"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTOPILOT",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LNAV + VNAV",
+          "Response": "ON / AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RWY TURNOFF LIGHTS",
+          "Response": "OFF"
+        }
+      ]
+    },
+    {
+      "Name": "Climb",
+      "Items": [
+        {
+          "Type": "Information",
+          "Challenge": "PASSING TRANSITION ALTITUDE",
+          "Instruction": true,
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "ALTIMETER",
+              "Response": "STD"
+            }
+          ]
+        },
+        {
+          "Type": "Information",
+          "Challenge": "PASSING 10,000 FT",
+          "Instruction": true,
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "LANDING LIGHTS",
+              "Response": "OFF"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "LOGO LIGHTS",
+              "Response": "OFF"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "SEAT BELTS",
+              "Response": "AUTO / OFF"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "ANTI-ICE",
+              "Response": "AS REQUIRED"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "ENGINE START SWITCHES",
+              "Response": "OFF / AS REQUIRED"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Descent Prep.",
+      "Items": [
+        {
+          "Type": "Information",
+          "Challenge": "40 NM BEFORE T.O.D",
+          "Instruction": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ATIS / AIRPORT INFO",
+          "Response": "CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ALTIMETER",
+          "Response": "SET"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "FMC",
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "ARRIVAL PAGE",
+              "Response": "COMPLETED"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "APPR SPEED REF",
+              "Response": "SET"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "DESCENT FORECAST",
+              "Response": "COMPLETED"
+            }
+          ]
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "MCP ALTITUDE",
+          "Response": "RESET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RADIOS",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ILS FREQ",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ILS COURSE",
+          "Response": "SET"
+        }
+      ]
+    },
+    {
+      "Name": "Descent",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "DE-ICE",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LANDING ALT",
+          "Response": "CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RECALL",
+          "Response": "CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RADIO ALT / BARO MIN",
+          "Response": "SET, CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTO BRAKE",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "PASSING TRANSITION LEVEL",
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "ALTIMETER",
+              "Response": "SET TO LOCAL"
+            }
+          ]
+        },
+        {
+          "Type": "Information",
+          "Challenge": "PASSING 10,000 FT",
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "SPEED",
+              "Response": "250 KIAS"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "LANDING LIGHTS",
+              "Response": "ON"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "LOGO LIGHTS",
+              "Response": "AS REQUIRED / ON AT NIGHT"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "SEAT BELTS",
+              "Response": "ON"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Approach",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "ALTIMETER",
+          "Response": "CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LOCALIZER FREQ + COURSE",
+          "Response": "CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APP / VOR LOC",
+          "Response": "ARM"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LANDING GEAR",
+          "Response": "DOWN, 3 GREEN"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLAPS",
+          "Response": "15"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "SPEED-BRAKE",
+          "Response": "ARM"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "2ND AUTOPILOT",
+          "Response": "ARM (AUTOLAND)"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE START SWITCHES",
+          "Response": "CONT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLAPS",
+          "Response": "SET LANDING"
+        }
+      ]
+    },
+    {
+      "Name": "Landing",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "GO-AROUND ALTITUDE",
+          "Response": "SET",
+          "Description": "AFTER GS CAPTURE"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RWY TURNOFF LIGHTS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LANDING GEAR",
+          "Response": "3 GREEN"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTOPILOT",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTO-THRUST",
+          "Response": "AS REQUIRED"
+        }
+      ]
+    },
+    {
+      "Name": "Go Around Missed Apch.",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "THROTTLE",
+          "Response": "TO/GA"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLAPS",
+          "Response": "15"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "THRUST",
+          "Response": "VERIFY INCR"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "POSITIVE RATE",
+          "Response": "GEAR UP"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LNAV / HDG SEL",
+          "Response": "SET ABOVE 400 FT AGL"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "VNAV / LVL CHG",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LANDING GEAR LEVER",
+          "Response": "OFF",
+          "Description": "3 UNLIT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE START SWITCHES",
+          "Response": "AS NEEDED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FOLLOW MISSED APP. PROC. + ATC INSTRUCTIONS",
+          "Instruction": true
+        }
+      ]
+    },
+    {
+      "Name": "After Landing",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "TRANSPONDER",
+          "Response": "ALT OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TFC",
+          "Response": "PUSH OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLAPS",
+          "Response": "RETRACT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "SPEED-BRAKE",
+          "Response": "DOWN"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LANDING LIGHTS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TAXI LIGHTS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "STROBE LIGHTS",
+          "Response": "STEADY"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ANTI-ICE",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU",
+          "Response": "START"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PROBE HEAT",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENG START SWITCHES",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTO-BRAKE",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLIGHT DIRECTORS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BRAKE TEMP",
+          "Response": "CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LOWER DISPLAY UNIT",
+          "Response": "ENGINE"
+        }
+      ]
+    },
+    {
+      "Name": "Taxi to Gate",
+      "Items": [
+        {
+          "Type": "Information",
+          "Challenge": "TAXI SPEEDS",
+          "SubItems": [
+            {
+              "Type": "Information",
+              "Challenge": "15 KNOTS AT APRON"
+            },
+            {
+              "Type": "Information",
+              "Challenge": "30 KNOTS ON TAXIWAY"
+            },
+            {
+              "Type": "Information",
+              "Challenge": "50 KNOTS ON RUNWAY"
+            }
+          ]
+        },
+        {
+          "Type": "Information",
+          "Challenge": "TAXI TO GATE",
+          "Instruction": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RWY TURNOFF LIGHTS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU GEN SWITCHES",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AC-VOLTMETER-SLCTR",
+          "Response": "APU",
+          "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU BLEED",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTOPILOT",
+          "Response": "RESET",
+          "Optional": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "TURNING INTO GATE",
+          "Instruction": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TAXI LIGHTS",
+          "Response": "OFF"
+        }
+      ]
+    },
+    {
+      "Name": "Parking",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "PARKING BRAKE",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE FUEL CTRL LEVERS",
+          "Response": "CUT OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ANTI COLLISION LIGHTS",
+          "Response": "OFF",
+          "Description": "N2 < 20%"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "GROUND CONNECTIONS",
+          "Response": "ESTABLISH",
+          "Description": "FMC → MENU → FS ACTIONS"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PASSENGER SIGNS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "YAW DAMPER",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "GROUND POWER",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AC-VOLTMETER-SLCTR",
+          "Response": "GRND PWR",
+          "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FUEL PUMPS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE START SWITCHES",
+          "Response": "CHECK OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ELEC HYD PUMPS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ISOLATION VALVE",
+          "Response": "OPEN"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TRANSPONDER",
+          "Response": "2000, STANDBY"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "MASTER WARNING",
+          "Response": "OFF"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "NEW FLIGHT",
+          "Response": "RESTART CHECKLIST"
+        }
+      ]
+    },
+    {
+      "Name": "Shutdown",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "IRS SELECTORS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "WINDOW HEAT",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BLEEDS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PACKS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RECIRC. FANS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TRIM AIR",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "EXTERNAL LIGHTS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "GROUND POWER",
+          "Response": "DISCONNECT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AC-VOLTMETER-SLCTR",
+          "Response": "STDBY PWR",
+          "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "EMERGENCY EXIT LIGHTS",
+          "Response": "OFF + UNCOVERED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "IFE PASS SEAT PWR",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "CABIN / UTILITY PWR",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "COCKPIT LIGHTS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "STDBY PWR",
+          "Response": "OFF + UNCOVERED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "DC-VOLTMETER-SLCTR",
+          "Response": "BAT",
+          "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BATTERY",
+          "Response": "OFF + UNCOVERED"
         }
       ]
     }
