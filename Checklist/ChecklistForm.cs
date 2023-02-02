@@ -5,7 +5,7 @@ namespace Checklist
 {
     public partial class ChecklistForm : Form
     {
-        private Checklist checklist;
+        private readonly Checklist checklist;
         private Section selectedSection;
 
         /// <summary>
@@ -17,7 +17,7 @@ namespace Checklist
         {
             InitializeComponent();
             checklist = ChecklistReader.readChecklist(type);
-            onSectionChange();
+            OnSectionChange();
 
             // set title
             Text = checklist.Name;
@@ -27,7 +27,7 @@ namespace Checklist
 
             foreach (Section section in checklist.Sections)
             {
-                createSection(section);
+                CreateSection(section);
             }
         }
 
@@ -35,9 +35,11 @@ namespace Checklist
         /// Adds a tab page to the TabControl and populate it with the items from that section.
         /// </summary>
         /// <param name="section">Section to be populated.</param>
-        private void createSection(Section section)
+        private void CreateSection(Section section)
         {
             TabPage page = new TabPage(section.Name);
+            section.Page = page;
+            section.Form = this;
 
             TableLayoutPanel table = new TableLayoutPanel
             {
@@ -48,12 +50,7 @@ namespace Checklist
 
             int row = 0;
             foreach (Item item in section.Items)
-                item.Draw(table, ref row);
-
-            foreach (RowStyle style in table.RowStyles)
-            {
-                style.SizeType = SizeType.AutoSize;
-            }
+                item.Draw(table, section, ref row);
 
             page.Controls.Add(table);
 
@@ -66,7 +63,18 @@ namespace Checklist
             sectionsControl.TabPages.Add(page);
         }
 
-        private void onSectionChange()
+        public void UpdateCount()
+        {
+            int count = selectedSection.MadatoryCheckedCount;
+            int size = selectedSection.MandatorySize;
+
+            lblCount.Text = count + "/" + size;
+
+            progressCount.Maximum = size;
+            progressCount.Value = count;
+        }
+
+        private void OnSectionChange()
         {
             selectedSection = checklist.Sections[sectionsControl.SelectedIndex];
 
@@ -74,17 +82,20 @@ namespace Checklist
             lblCount.Visible = !selectedSection.Information;
             progressCount.Visible = !selectedSection.Information;
             separatorCount.Visible = !selectedSection.Information;
+            btnComplete.Visible = !selectedSection.Information;
+
+            UpdateCount();
         }
 
-        private void btnPrevCheck_Click(object sender, System.EventArgs e)
+        private void BtnPrevCheck_Click(object sender, System.EventArgs e)
         {
             int index = sectionsControl.SelectedIndex;
             index--;
-            if (index > 0)
+            if (index >= 0)
                 sectionsControl.SelectedIndex = index;
         }
 
-        private void btnNextChecklist_Click(object sender, System.EventArgs e)
+        private void BtnNextChecklist_Click(object sender, System.EventArgs e)
         {
             int index = sectionsControl.SelectedIndex;
             index++;
@@ -92,14 +103,21 @@ namespace Checklist
                 sectionsControl.SelectedIndex = index;
         }
 
-        private void btnComplete_Click(object sender, System.EventArgs e)
+        private void SectionsControl_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-
+            OnSectionChange();
         }
 
-        private void sectionsControl_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void BtnComplete_Click(object sender, System.EventArgs e)
         {
-            onSectionChange();
+            selectedSection.SetChecked(true);
+            BtnNextChecklist_Click(sender, e);
+        }        
+
+        private void BtnReset_Click(object sender, System.EventArgs e)
+        {
+            selectedSection.SetChecked(false);
+            sectionsControl.SelectedIndex = 0;
         }
     }
 }

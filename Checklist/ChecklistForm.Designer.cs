@@ -39,12 +39,12 @@
             this.btnPrevCheck = new System.Windows.Forms.ToolStripButton();
             this.btnNextChecklist = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.lblCount = new System.Windows.Forms.ToolStripLabel();
-            this.progressCount = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnComplete = new System.Windows.Forms.ToolStripButton();
-            this.separatorCount = new System.Windows.Forms.ToolStripSeparator();
             this.btnReset = new System.Windows.Forms.ToolStripButton();
+            this.separatorCount = new System.Windows.Forms.ToolStripSeparator();
+            this.lblCount = new System.Windows.Forms.ToolStripLabel();
+            this.progressCount = new System.Windows.Forms.ToolStripProgressBar();
             this.sectionsControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -62,11 +62,12 @@
             this.sectionsControl.SelectedIndex = 0;
             this.sectionsControl.Size = new System.Drawing.Size(827, 418);
             this.sectionsControl.TabIndex = 0;
-            this.sectionsControl.SelectedIndexChanged += new System.EventHandler(this.sectionsControl_SelectedIndexChanged);
+            this.sectionsControl.SelectedIndexChanged += new System.EventHandler(this.SectionsControl_SelectedIndexChanged);
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.tableLayoutPanel1);
+            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -128,6 +129,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -143,12 +145,12 @@
             this.btnPrevCheck,
             this.btnNextChecklist,
             this.toolStripSeparator1,
-            this.lblCount,
-            this.progressCount,
             this.toolStripSeparator2,
             this.btnComplete,
+            this.btnReset,
             this.separatorCount,
-            this.btnReset});
+            this.lblCount,
+            this.progressCount});
             this.toolStrip1.Location = new System.Drawing.Point(0, 418);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(827, 32);
@@ -164,7 +166,7 @@
             this.btnPrevCheck.Name = "btnPrevCheck";
             this.btnPrevCheck.Size = new System.Drawing.Size(133, 29);
             this.btnPrevCheck.Text = "Prev Checklist";
-            this.btnPrevCheck.Click += new System.EventHandler(this.btnPrevCheck_Click);
+            this.btnPrevCheck.Click += new System.EventHandler(this.BtnPrevCheck_Click);
             // 
             // btnNextChecklist
             // 
@@ -176,25 +178,12 @@
             this.btnNextChecklist.Name = "btnNextChecklist";
             this.btnNextChecklist.Size = new System.Drawing.Size(135, 29);
             this.btnNextChecklist.Text = "Next Checklist";
-            this.btnNextChecklist.Click += new System.EventHandler(this.btnNextChecklist_Click);
+            this.btnNextChecklist.Click += new System.EventHandler(this.BtnNextChecklist_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
-            // 
-            // lblCount
-            // 
-            this.lblCount.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(39, 29);
-            this.lblCount.Text = "0/0";
-            this.lblCount.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            // 
-            // progressCount
-            // 
-            this.progressCount.Name = "progressCount";
-            this.progressCount.Size = new System.Drawing.Size(100, 29);
             // 
             // toolStripSeparator2
             // 
@@ -212,12 +201,7 @@
             this.btnComplete.Name = "btnComplete";
             this.btnComplete.Size = new System.Drawing.Size(164, 29);
             this.btnComplete.Text = "Complete Section";
-            this.btnComplete.Click += new System.EventHandler(this.btnComplete_Click);
-            // 
-            // separatorCount
-            // 
-            this.separatorCount.Name = "separatorCount";
-            this.separatorCount.Size = new System.Drawing.Size(6, 32);
+            this.btnComplete.Click += new System.EventHandler(this.BtnComplete_Click);
             // 
             // btnReset
             // 
@@ -230,6 +214,25 @@
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(60, 29);
             this.btnReset.Text = "Reset";
+            this.btnReset.Click += new System.EventHandler(this.BtnReset_Click);
+            // 
+            // separatorCount
+            // 
+            this.separatorCount.Name = "separatorCount";
+            this.separatorCount.Size = new System.Drawing.Size(6, 32);
+            // 
+            // lblCount
+            // 
+            this.lblCount.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(39, 29);
+            this.lblCount.Text = "0/0";
+            this.lblCount.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            // 
+            // progressCount
+            // 
+            this.progressCount.Name = "progressCount";
+            this.progressCount.Size = new System.Drawing.Size(100, 29);
             // 
             // ChecklistForm
             // 
