@@ -20,6 +20,7 @@ namespace Checklist
         public List<Item> Items { get; set; }
 
         // UI
+        public bool Drawn { get; set; } = false;
         public List<CheckBox> CheckItems { get; set; }
         public TabPage Page { get; set; }
         public ChecklistForm Form { get; set; }

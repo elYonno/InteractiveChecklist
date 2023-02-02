@@ -1,5 +1,6 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
+using static System.Collections.Specialized.BitVector32;
 
 namespace Checklist
 {
@@ -17,7 +18,6 @@ namespace Checklist
         {
             InitializeComponent();
             checklist = ChecklistReader.readChecklist(type);
-            OnSectionChange();
 
             // set title
             Text = checklist.Name;
@@ -29,6 +29,8 @@ namespace Checklist
             {
                 CreateSection(section);
             }
+
+            OnSectionChange();
         }
 
         /// <summary>
@@ -38,27 +40,17 @@ namespace Checklist
         private void CreateSection(Section section)
         {
             TabPage page = new TabPage(section.Name);
-            section.Page = page;
-            section.Form = this;
 
-            TableLayoutPanel table = new TableLayoutPanel
-            {
-                AutoSize = true,
-                AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                Dock = DockStyle.Top
-            };
-
-            int row = 0;
-            foreach (Item item in section.Items)
-                item.Draw(table, section, ref row);
-
-            page.Controls.Add(table);
-
+            // only allow vertical scroll
             page.AutoScroll = false;
             page.HorizontalScroll.Enabled = false;
             page.HorizontalScroll.Visible = false;
             page.HorizontalScroll.Maximum = 0;
             page.AutoScroll = true;
+
+            section.Page = page;
+            section.Form = this;
+
 
             sectionsControl.TabPages.Add(page);
         }
@@ -74,6 +66,28 @@ namespace Checklist
             progressCount.Value = count;
         }
 
+        private void DrawSelectedSection()
+        {
+            if (!selectedSection.Drawn)
+            {
+                TabPage page = selectedSection.Page;
+                TableLayoutPanel table = new TableLayoutPanel
+                {
+                    AutoSize = true,
+                    AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                    Dock = DockStyle.Top
+                };
+
+                int row = 0;
+                foreach (Item item in selectedSection.Items)
+                    item.Draw(table, selectedSection, ref row);
+
+                page.Controls.Add(table);
+
+                selectedSection.Drawn = true;
+            }
+        }
+
         private void OnSectionChange()
         {
             selectedSection = checklist.Sections[sectionsControl.SelectedIndex];
@@ -85,6 +99,7 @@ namespace Checklist
             btnComplete.Visible = !selectedSection.Information;
 
             UpdateCount();
+            DrawSelectedSection();
         }
 
         private void BtnPrevCheck_Click(object sender, System.EventArgs e)
@@ -116,7 +131,10 @@ namespace Checklist
 
         private void BtnReset_Click(object sender, System.EventArgs e)
         {
-            var result = MessageBox.Show("Reset checklist?", "Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("Reset checklist?",
+                                                  "Reset",
+                                                  MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
