@@ -6,6 +6,7 @@ namespace Checklist
     public partial class ChecklistForm : Form
     {
         private Checklist checklist;
+        private Section selectedSection;
 
         /// <summary>
         /// Populate the form with the whole checklist depending on the aircraft type.
@@ -16,6 +17,7 @@ namespace Checklist
         {
             InitializeComponent();
             checklist = ChecklistReader.readChecklist(type);
+            onSectionChange();
 
             // set title
             Text = checklist.Name;
@@ -62,6 +64,42 @@ namespace Checklist
             page.AutoScroll = true;
 
             sectionsControl.TabPages.Add(page);
+        }
+
+        private void onSectionChange()
+        {
+            selectedSection = checklist.Sections[sectionsControl.SelectedIndex];
+
+            // hide count when in an information section
+            lblCount.Visible = !selectedSection.Information;
+            progressCount.Visible = !selectedSection.Information;
+            separatorCount.Visible = !selectedSection.Information;
+        }
+
+        private void btnPrevCheck_Click(object sender, System.EventArgs e)
+        {
+            int index = sectionsControl.SelectedIndex;
+            index--;
+            if (index > 0)
+                sectionsControl.SelectedIndex = index;
+        }
+
+        private void btnNextChecklist_Click(object sender, System.EventArgs e)
+        {
+            int index = sectionsControl.SelectedIndex;
+            index++;
+            if (index < sectionsControl.TabCount)
+                sectionsControl.SelectedIndex = index;
+        }
+
+        private void btnComplete_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void sectionsControl_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            onSectionChange();
         }
     }
 }
