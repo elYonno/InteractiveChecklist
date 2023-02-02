@@ -116,9 +116,14 @@ namespace Checklist
 
         private void BtnReset_Click(object sender, System.EventArgs e)
         {
-            foreach (Section section in checklist.Sections)
-                section.SetChecked(false);
-            sectionsControl.SelectedIndex = 0;
+            var result = MessageBox.Show("Reset checklist?", "Reset", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                foreach (Section section in checklist.Sections)
+                    section.SetChecked(false);
+                sectionsControl.SelectedIndex = 0;
+            }
         }
     }
 }
