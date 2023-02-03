@@ -32,13 +32,16 @@ namespace Checklist
         public Label ChallengeLabel { get; protected set; }
         public string Response { get; set; }
         public string Description { get; set; }
+        public Label DescriptionLabel { get; protected set; }
         public List<Item> SubItems { get; set; }
 
         public abstract void Draw(TableLayoutPanel table, Section section, ref int row, int identation = 0);
 
-        public virtual void Select(bool select)
+        public abstract void Select(bool select);
+
+        public Label GetLowestLabel()
         {
-            SubItems?.ForEach((item) => { item.Select(select); });
+            return DescriptionLabel?? ChallengeLabel;
         }
 
         protected void DrawChallenge(TableLayoutPanel table, ref int row, int identation)
@@ -88,7 +91,7 @@ namespace Checklist
         {
             if (Description != null)
             {
-                Label description = new Label
+                DescriptionLabel = new Label
                 {
                     MaximumSize = new Size(table.Width * 4, 0),
                     AutoSize = true,
@@ -99,8 +102,8 @@ namespace Checklist
                     ForeColor = Color.Gray
                 };
 
-                table.Controls.Add(description, 0, row);
-                table.SetColumnSpan(description, 2);
+                table.Controls.Add(DescriptionLabel, 0, row);
+                table.SetColumnSpan(DescriptionLabel, 2);
                 row++;
             }
         }
@@ -152,8 +155,6 @@ namespace Checklist
 
         public override void Select(bool select)
         {
-            base.Select(select);
-
             if (select)
             {
                 ChallengeLabel.Font = new Font("Microsoft Sans Serif",
@@ -215,8 +216,6 @@ namespace Checklist
 
         public override void Select(bool select)
         {
-            base.Select(select);
-
             if (select)
             {
                 ChallengeLabel.Font = new Font("Microsoft Sans Serif",
@@ -269,8 +268,6 @@ namespace Checklist
 
         public override void Select(bool select)
         {
-            base.Select(select);
-
             if (select)
             {
                 ChallengeLabel.Font = new Font("Microsoft Sans Serif",

@@ -45,6 +45,8 @@ namespace Checklist
         /// <param name="section">Section to be populated.</param>
         private void CreateSection(Section section)
         {
+            section.GenerateUnravelledItems();
+
             TabPage page = new TabPage(section.Name);
 
             // only allow vertical scroll

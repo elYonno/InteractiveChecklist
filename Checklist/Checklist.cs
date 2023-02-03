@@ -18,6 +18,10 @@ namespace Checklist
         public string Name { get; set; }
         public bool Information { get; set; }
         public LinkedList<Item> Items { get; set; }
+        /// <summary>
+        /// All items and sub items in one list
+        /// </summary>
+        public LinkedList<Item> UnravelledItems { get; set; }
 
         // UI
         public bool Drawn { get; set; } = false;
@@ -39,13 +43,13 @@ namespace Checklist
             get { return selectedIndex; }
             set
             {
-                if (value < -1 || value >= Items.Count) return; // new index out of range
+                if (value < -1 || value >= UnravelledItems.Count) return; // new index out of range
                 if (selectedIndex > -1)
-                    Items.ElementAt(selectedIndex).Select(false); // remove old select
+                    UnravelledItems.ElementAt(selectedIndex).Select(false); // remove old select
 
-                if (value > -1 && (value < Items.Count - 1 || Information))
-                    Items.ElementAt(value).Select(true);    // select new index,
-                                                            // excluding checklist complete
+                if (value > -1 && (value < UnravelledItems.Count || Information))
+                    UnravelledItems.ElementAt(value).Select(true);    // select new index,
+                                                                      // excluding checklist complete
 
                 selectedIndex = value;
             }
@@ -81,11 +85,26 @@ namespace Checklist
         {
             int index = SelectedIndex + offset;
             if (index < 0)
-                return Items.First.Value.ChallengeLabel;
-            else if (index < Items.Count)
-                return Items.ElementAt(index).ChallengeLabel;
+                return UnravelledItems.First.Value.ChallengeLabel;
+            else if (index < UnravelledItems.Count)
+                return UnravelledItems.ElementAt(index).ChallengeLabel;
             else
-                return Items.Last.Value.ChallengeLabel;
+                return UnravelledItems.Last.Value.GetLowestLabel();
+        }
+
+        public void GenerateUnravelledItems()
+        {
+            UnravelledItems = new LinkedList<Item>();
+
+            foreach (Item item in Items)
+            {
+                UnravelledItems.AddLast(item);
+                if (item.SubItems != null)
+                {
+                    foreach (Item subitem in item.SubItems)
+                        UnravelledItems.AddLast(subitem);
+                }
+            }
         }
 
         private void Mandatory_Checked_Changed(object sender, EventArgs e)
