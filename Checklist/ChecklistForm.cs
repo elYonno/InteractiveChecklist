@@ -47,15 +47,14 @@ namespace Checklist
         {
             TabPage page = new TabPage(section.Name);
 
-            if (!tabletMode)
-            {
-                // only allow vertical scroll
-                page.AutoScroll = false;
-                page.HorizontalScroll.Enabled = false;
-                page.HorizontalScroll.Visible = false;
-                page.HorizontalScroll.Maximum = 0;
-                page.AutoScroll = true;
-            }
+            // only allow vertical scroll
+            page.AutoScroll = false;
+            page.HorizontalScroll.Enabled = false;
+            page.HorizontalScroll.Visible = false;
+            page.HorizontalScroll.Maximum = 0;
+            page.VerticalScroll.Enabled = !tabletMode;
+            page.VerticalScroll.Visible = !tabletMode;
+            page.AutoScroll = true;
 
             section.Page = page;
             section.Form = this;
@@ -83,8 +82,13 @@ namespace Checklist
             {
                 // add extra items
                 selectedSection.Items.AddFirst(new Title(selectedSection.Name));
-                Information info = new Information($"{selectedSection.Name} checklist complete.");
-                selectedSection.Items.AddLast(info);
+
+                Information info = null;
+                if (!selectedSection.Information)
+                {
+                    info = new Information($"{selectedSection.Name} checklist complete.");
+                    selectedSection.Items.AddLast(info);
+                }
 
                 // use creted tab page
                 TabPage page = selectedSection.Page;
@@ -101,7 +105,8 @@ namespace Checklist
                     item.Draw(table, selectedSection, ref row);
 
                 // connect checklist complete message
-                selectedSection.SectionDoneLabel = info.ChallengeLabel;
+                if (info != null)
+                    selectedSection.SectionDoneLabel = info.ChallengeLabel;
 
                 // populate tab page
                 page.Controls.Add(table);
@@ -113,6 +118,7 @@ namespace Checklist
 
         private void OnSectionChange()
         {
+            if (selectedSection != null) selectedSection.SelectedIndex = -1;     // reset index
             selectedSection = checklist.Sections[sectionsControl.SelectedIndex];
 
             // hide count when in an information section
@@ -124,6 +130,8 @@ namespace Checklist
 
             UpdateCount();
             DrawSelectedSection();
+
+            selectedSection.SelectedIndex = 0;
         }
 
         private void BtnPrevCheck_Click(object sender, System.EventArgs e)
@@ -171,6 +179,18 @@ namespace Checklist
         private void BtnResetCurrent_Click(object sender, System.EventArgs e)
         {
             selectedSection.SetChecked(false);
+        }
+
+        private void BtnDown_Click(object sender, System.EventArgs e)
+        {
+            selectedSection.SelectedIndex++;
+            selectedSection.Page.ScrollControlIntoView(selectedSection.GetSelectedChallenge(2));
+        }
+
+        private void BtnUp_Click(object sender, System.EventArgs e)
+        {
+            selectedSection.SelectedIndex--;
+            selectedSection.Page.ScrollControlIntoView(selectedSection.GetSelectedChallenge(-2));
         }
     }
 }

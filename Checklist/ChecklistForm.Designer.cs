@@ -126,6 +126,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 3);
             this.label3.Margin = new System.Windows.Forms.Padding(3);
@@ -140,7 +141,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(744, 381);
+            this.tabPage2.Size = new System.Drawing.Size(858, 381);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -284,18 +285,19 @@
             this.btnUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnUp.Location = new System.Drawing.Point(3, 3);
             this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(75, 143);
+            this.btnUp.Size = new System.Drawing.Size(75, 144);
             this.btnUp.TabIndex = 0;
             this.btnUp.UseVisualStyleBackColor = true;
+            this.btnUp.Click += new System.EventHandler(this.BtnUp_Click);
             // 
             // btnSelect
             // 
             this.btnSelect.BackgroundImage = global::Checklist.Properties.Resources.dash;
             this.btnSelect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSelect.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSelect.Location = new System.Drawing.Point(3, 152);
+            this.btnSelect.Location = new System.Drawing.Point(3, 153);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(75, 143);
+            this.btnSelect.Size = new System.Drawing.Size(75, 144);
             this.btnSelect.TabIndex = 1;
             this.btnSelect.UseVisualStyleBackColor = true;
             // 
@@ -304,11 +306,12 @@
             this.btnDown.BackgroundImage = global::Checklist.Properties.Resources.down;
             this.btnDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnDown.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDown.Location = new System.Drawing.Point(3, 301);
+            this.btnDown.Location = new System.Drawing.Point(3, 303);
             this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(75, 146);
+            this.btnDown.Size = new System.Drawing.Size(75, 144);
             this.btnDown.TabIndex = 2;
             this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.BtnDown_Click);
             // 
             // ChecklistForm
             // 

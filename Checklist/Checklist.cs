@@ -21,7 +21,7 @@ namespace Checklist
 
         // UI
         public bool Drawn { get; set; } = false;
-        public List<CheckBox> CheckItems { get; set; }
+
         private Label sectionDoneLabel;
         public Label SectionDoneLabel
         {
@@ -32,20 +32,32 @@ namespace Checklist
                 sectionDoneLabel.Visible = false;
             }
         }
+
+        private int selectedIndex = -1;
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                if (value < -1 || value >= Items.Count) return; // new index out of range
+                if (selectedIndex > -1)
+                    Items.ElementAt(selectedIndex).Select(false); // remove old select
+
+                if (value > -1 && (value < Items.Count - 1 || Information))
+                    Items.ElementAt(value).Select(true);    // select new index,
+                                                            // excluding checklist complete
+
+                selectedIndex = value;
+            }
+        }
+
         public TabPage Page { get; set; }
         public ChecklistForm Form { get; set; }
         public int MandatorySize { get; private set; }
         public int MadatoryCheckedCount { get; private set; } = 0;
 
-        public Section()
-        {
-            CheckItems = new List<CheckBox>();
-        }
-
         public void AddCheckBox(CheckBox checkBox, bool optional)
         {
-            CheckItems.Add(checkBox);
-
             // only mandatory check items
             if (!optional)
             {
@@ -56,8 +68,24 @@ namespace Checklist
 
         public void SetChecked(bool check)
         {
-            foreach (CheckBox checkBox in CheckItems)
-                checkBox.Checked = check;
+            foreach (Item item in Items)
+            {
+                if (item is CheckItem checkItem)
+                {
+                    checkItem.ResponseCheck.Checked = check;
+                }
+            }
+        }
+
+        public Label GetSelectedChallenge(int offset = 0)
+        {
+            int index = SelectedIndex + offset;
+            if (index < 0)
+                return Items.First.Value.ChallengeLabel;
+            else if (index < Items.Count)
+                return Items.ElementAt(index).ChallengeLabel;
+            else
+                return Items.Last.Value.ChallengeLabel;
         }
 
         private void Mandatory_Checked_Changed(object sender, EventArgs e)
