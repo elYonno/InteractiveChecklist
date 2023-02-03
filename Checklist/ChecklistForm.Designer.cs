@@ -41,7 +41,9 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnComplete = new System.Windows.Forms.ToolStripButton();
-            this.btnReset = new System.Windows.Forms.ToolStripButton();
+            this.btnResetAll = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.btnResetCurrent = new System.Windows.Forms.ToolStripButton();
             this.separatorCount = new System.Windows.Forms.ToolStripSeparator();
             this.lblCount = new System.Windows.Forms.ToolStripLabel();
             this.progressCount = new System.Windows.Forms.ToolStripProgressBar();
@@ -147,7 +149,9 @@
             this.toolStripSeparator1,
             this.toolStripSeparator2,
             this.btnComplete,
-            this.btnReset,
+            this.btnResetAll,
+            this.toolStripSeparator3,
+            this.btnResetCurrent,
             this.separatorCount,
             this.lblCount,
             this.progressCount});
@@ -203,18 +207,35 @@
             this.btnComplete.Text = "Complete Section";
             this.btnComplete.Click += new System.EventHandler(this.BtnComplete_Click);
             // 
-            // btnReset
+            // btnResetAll
             // 
-            this.btnReset.BackColor = System.Drawing.Color.Maroon;
-            this.btnReset.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnReset.Font = new System.Drawing.Font("Segoe UI", 14F);
-            this.btnReset.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnReset.Image = ((System.Drawing.Image)(resources.GetObject("btnReset.Image")));
-            this.btnReset.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(60, 29);
-            this.btnReset.Text = "Reset";
-            this.btnReset.Click += new System.EventHandler(this.BtnReset_Click);
+            this.btnResetAll.BackColor = System.Drawing.Color.Maroon;
+            this.btnResetAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnResetAll.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnResetAll.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnResetAll.Image = ((System.Drawing.Image)(resources.GetObject("btnResetAll.Image")));
+            this.btnResetAll.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnResetAll.Name = "btnResetAll";
+            this.btnResetAll.Size = new System.Drawing.Size(87, 29);
+            this.btnResetAll.Text = "Reset All";
+            this.btnResetAll.ToolTipText = "ResetAll";
+            this.btnResetAll.Click += new System.EventHandler(this.BtnResetAll_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
+            // 
+            // btnResetCurrent
+            // 
+            this.btnResetCurrent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnResetCurrent.Font = new System.Drawing.Font("Segoe UI", 14F);
+            this.btnResetCurrent.Image = ((System.Drawing.Image)(resources.GetObject("btnResetCurrent.Image")));
+            this.btnResetCurrent.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnResetCurrent.Name = "btnResetCurrent";
+            this.btnResetCurrent.Size = new System.Drawing.Size(129, 29);
+            this.btnResetCurrent.Text = "Reset Current";
+            this.btnResetCurrent.Click += new System.EventHandler(this.BtnResetCurrent_Click);
             // 
             // separatorCount
             // 
@@ -272,6 +293,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton btnComplete;
         private System.Windows.Forms.ToolStripSeparator separatorCount;
-        private System.Windows.Forms.ToolStripButton btnReset;
+        private System.Windows.Forms.ToolStripButton btnResetAll;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripButton btnResetCurrent;
     }
 }

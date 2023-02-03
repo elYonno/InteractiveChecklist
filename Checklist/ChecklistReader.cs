@@ -21,7 +21,7 @@ namespace Checklist
 
     internal class ChecklistReader
     {
-        public static string getResource(AircraftType type)
+        public static string GetResource(AircraftType type)
         {
             string resourceName;
 
@@ -41,9 +41,9 @@ namespace Checklist
             return resourceName;
         }
 
-        public static Checklist readChecklist(AircraftType type)
+        public static Checklist ReadChecklist(AircraftType type)
         {
-            string resource = getResource(type);
+            string resource = GetResource(type);
 
             Checklist checklist = JsonConvert.DeserializeObject<Checklist>(resource,
                 new ItemConverter());

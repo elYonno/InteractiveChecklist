@@ -17,7 +17,7 @@ namespace Checklist
         public ChecklistForm(AircraftType type = AircraftType.Boeing738)
         {
             InitializeComponent();
-            checklist = ChecklistReader.readChecklist(type);
+            checklist = ChecklistReader.ReadChecklist(type);
 
             // set title
             Text = checklist.Name;
@@ -34,7 +34,7 @@ namespace Checklist
         }
 
         /// <summary>
-        /// Adds a tab page to the TabControl and populate it with the items from that section.
+        /// Adds a tab page to the TabControl named that section.
         /// </summary>
         /// <param name="section">Section to be populated.</param>
         private void CreateSection(Section section)
@@ -51,7 +51,6 @@ namespace Checklist
             section.Page = page;
             section.Form = this;
 
-
             sectionsControl.TabPages.Add(page);
         }
 
@@ -66,10 +65,19 @@ namespace Checklist
             progressCount.Value = count;
         }
 
+        /// <summary>
+        /// Populate selected section if it has not been drawn.
+        /// </summary>
         private void DrawSelectedSection()
         {
             if (!selectedSection.Drawn)
             {
+                // add extra items
+                selectedSection.Items.AddFirst(new Title(selectedSection.Name));
+                Information info = new Information($"{selectedSection.Name} checklist complete.");
+                selectedSection.Items.AddLast(info);
+
+                // use creted tab page
                 TabPage page = selectedSection.Page;
                 TableLayoutPanel table = new TableLayoutPanel
                 {
@@ -78,13 +86,19 @@ namespace Checklist
                     Dock = DockStyle.Top
                 };
 
+                // draw all items
                 int row = 0;
                 foreach (Item item in selectedSection.Items)
                     item.Draw(table, selectedSection, ref row);
 
-                page.Controls.Add(table);
+                // connect checklist complete message
+                selectedSection.SectionDoneLabel = info.ChallengeLabel;
 
+                // populate tab page
+                page.Controls.Add(table);
                 selectedSection.Drawn = true;
+
+                UpdateCount();
             }
         }
 
@@ -129,7 +143,7 @@ namespace Checklist
             BtnNextChecklist_Click(sender, e);
         }        
 
-        private void BtnReset_Click(object sender, System.EventArgs e)
+        private void BtnResetAll_Click(object sender, System.EventArgs e)
         {
             DialogResult result = MessageBox.Show("Reset checklist?",
                                                   "Reset",
@@ -142,6 +156,11 @@ namespace Checklist
                     section.SetChecked(false);
                 sectionsControl.SelectedIndex = 0;
             }
+        }
+
+        private void BtnResetCurrent_Click(object sender, System.EventArgs e)
+        {
+            selectedSection.SetChecked(false);
         }
     }
 }

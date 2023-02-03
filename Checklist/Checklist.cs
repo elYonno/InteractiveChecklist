@@ -17,11 +17,21 @@ namespace Checklist
     {
         public string Name { get; set; }
         public bool Information { get; set; }
-        public List<Item> Items { get; set; }
+        public LinkedList<Item> Items { get; set; }
 
         // UI
         public bool Drawn { get; set; } = false;
         public List<CheckBox> CheckItems { get; set; }
+        private Label sectionDoneLabel;
+        public Label SectionDoneLabel
+        {
+            get { return sectionDoneLabel; }
+            set
+            {
+                sectionDoneLabel = value;
+                sectionDoneLabel.Visible = false;
+            }
+        }
         public TabPage Page { get; set; }
         public ChecklistForm Form { get; set; }
         public int MandatorySize { get; private set; }
@@ -36,10 +46,11 @@ namespace Checklist
         {
             CheckItems.Add(checkBox);
 
+            // only mandatory check items
             if (!optional)
             {
                 MandatorySize++;
-                checkBox.CheckedChanged += CheckBox_CheckedChanged;
+                checkBox.CheckedChanged += Mandatory_Checked_Changed;
             }
         }
 
@@ -49,19 +60,26 @@ namespace Checklist
                 checkBox.Checked = check;
         }
 
-        private void CheckBox_CheckedChanged(object sender, EventArgs e)
+        private void Mandatory_Checked_Changed(object sender, EventArgs e)
         {
             CheckBox check = (CheckBox)sender;
             if (check.Checked)
             {
                 MadatoryCheckedCount++;
                 if (MadatoryCheckedCount == MandatorySize)
+                {
                     Page.Text = Name + "✓";
+                    SectionDoneLabel.Visible = true;
+                }
             }
             else
             {
                 if (MadatoryCheckedCount == MandatorySize)
+                {
                     Page.Text = Name;
+                    SectionDoneLabel.Visible = false;
+                }
+
                 MadatoryCheckedCount--;
             }
 

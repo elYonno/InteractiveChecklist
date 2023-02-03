@@ -29,15 +29,16 @@ namespace Checklist
         [JsonConverter(typeof(StringEnumConverter))]
         public ItemType Type { get; set; }
         public string Challenge { get; set; }
+        public Label ChallengeLabel { get; protected set; }
         public string Response { get; set; }
         public string Description { get; set; }
         public List<Item> SubItems { get; set; }
 
         public abstract void Draw(TableLayoutPanel table, Section section, ref int row, int identation = 0);
 
-        protected Label DrawChallenge(TableLayoutPanel table, ref int row, int identation)
+        protected void DrawChallenge(TableLayoutPanel table, ref int row, int identation)
         {
-            Label challenge = new Label
+            ChallengeLabel = new Label
             {
                 AutoSize = true,
                 Text = Challenge,
@@ -48,9 +49,7 @@ namespace Checklist
                 Dock = DockStyle.Fill
             };
 
-            table.Controls.Add(challenge, 0, row);
-
-            return challenge;
+            table.Controls.Add(ChallengeLabel, 0, row);
         }
 
         protected void DrawNextRow(TableLayoutPanel table, Section section, ref int row, int identation)
@@ -111,13 +110,16 @@ namespace Checklist
 
     internal class CheckItem : Item
     {
+        /// <summary>
+        /// If true, challenge and response label will be gray
+        /// </summary>
         public bool Optional { get; set; } = false;
 
         public override void Draw(TableLayoutPanel table, Section section, ref int row, int identation = 0)
         {
-            Label challenge = DrawChallenge(table, ref row, identation);
+            DrawChallenge(table, ref row, identation);
 
-            if (Optional) challenge.ForeColor= Color.Gray;
+            if (Optional) ChallengeLabel.ForeColor= Color.Gray;
 
             CheckBox response = new CheckBox
             {
@@ -131,7 +133,7 @@ namespace Checklist
                 Dock = DockStyle.Fill
             };
 
-            challenge.Click += (s, e) => response.Checked = !response.Checked;
+            ChallengeLabel.Click += (s, e) => response.Checked = !response.Checked;
             section.AddCheckBox(response, Optional);
 
             if (Optional) response.ForeColor = Color.Gray;
@@ -143,12 +145,19 @@ namespace Checklist
 
     internal class Information : Item
     {
+        /// <summary>
+        /// If true, challenge label will be bold
+        /// </summary>
         public bool Instruction { get; set; } = false;
+
+        public Information() { }
+
+        public Information(string info) => Challenge = info;
 
         public override void Draw(TableLayoutPanel table, Section section, ref int row, int identation = 0)
         {
-            Label label = DrawChallenge(table, ref row, identation);
-            if (Instruction) label.Font = new Font("Microsoft Sans Serif", 14, FontStyle.Bold);
+            DrawChallenge(table, ref row, identation);
+            if (Instruction) ChallengeLabel.Font = new Font("Microsoft Sans Serif", 14, FontStyle.Bold);
 
             if (Response != null)
             {
@@ -170,9 +179,13 @@ namespace Checklist
 
     internal class Title : Item
     {
+        public Title() { }
+
+        public Title(string title) => Challenge = title;
+
         public override void Draw(TableLayoutPanel table, Section section, ref int row, int identation = 0)
         {
-            Control title = new Label
+            ChallengeLabel = new Label
             {
                 AutoSize = true,
                 Text = Challenge,
@@ -181,8 +194,8 @@ namespace Checklist
                 Font = new Font("Microsoft Sans Serif", 18, FontStyle.Bold),
                 TextAlign = ContentAlignment.MiddleCenter
             };
-            table.Controls.Add(title, 0, row);
-            table.SetColumnSpan(title, 2);
+            table.Controls.Add(ChallengeLabel, 0, row);
+            table.SetColumnSpan(ChallengeLabel, 2);
 
             DrawNextRow(table, section, ref row, identation);
         }
