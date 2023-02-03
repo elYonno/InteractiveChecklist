@@ -264,6 +264,12 @@
           "Challenge": "MASTER CAUTION",
           "Response": "DISENGAGE",
           "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "STALL WARNING",
+          "Response": "TEST",
+          "Description": "REQUIRES AC POWER"
         }
       ]
     },
@@ -416,11 +422,6 @@
         },
         {
           "Type": "CheckItem",
-          "Challenge": "STALL WARNING",
-          "Response": "TEST"
-        },
-        {
-          "Type": "CheckItem",
           "Challenge": "PARKING BRAKE",
           "Response": "SET"
         },
@@ -489,8 +490,7 @@
         {
           "Type": "CheckItem",
           "Challenge": "R ENGINE START SWITCH",
-          "Response": "GRD",
-          "Description": "WAIT FOR AT LEAST 25% N2"
+          "Response": "GRD"
         },
         {
           "Type": "CheckItem",
@@ -889,6 +889,12 @@
           "Type": "CheckItem",
           "Challenge": "ILS COURSE",
           "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ARRIVAL BRIEFING",
+          "Response": "REVIEWED",
+          "Optional": true
         }
       ]
     },
@@ -1030,6 +1036,11 @@
         },
         {
           "Type": "CheckItem",
+          "Challenge": "FLAPS",
+          "Response": "LANDING"
+        },
+        {
+          "Type": "CheckItem",
           "Challenge": "AUTOPILOT",
           "Response": "AS REQUIRED"
         },
@@ -1037,6 +1048,11 @@
           "Type": "CheckItem",
           "Challenge": "AUTO-THRUST",
           "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "MUST BE STABILIZED BEFORE 1,000 FT AGL",
+          "Instruction": true
         }
       ]
     },
@@ -1085,7 +1101,7 @@
           "Response": "AS NEEDED"
         },
         {
-          "Type": "CheckItem",
+          "Type": "Information",
           "Challenge": "FOLLOW MISSED APP. PROC. + ATC INSTRUCTIONS",
           "Instruction": true
         }
@@ -1162,7 +1178,8 @@
         {
           "Type": "CheckItem",
           "Challenge": "BRAKE TEMP",
-          "Response": "CHECK"
+          "Response": "CHECK",
+          "Description": "SYS PAGE"
         },
         {
           "Type": "CheckItem",
@@ -1320,7 +1337,14 @@
         {
           "Type": "Information",
           "Challenge": "NEW FLIGHT",
-          "Response": "RESTART CHECKLIST"
+          "Response": "RESTART CHECKLIST",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "LAST FLIGHT OF THE DAY",
+          "Response": "CONTINUE SHUTDOWN CHECKLIST",
+          "Instruction": true
         }
       ]
     },
