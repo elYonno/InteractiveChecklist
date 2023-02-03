@@ -8,16 +8,22 @@ namespace Checklist
     {
         private readonly Checklist checklist;
         private Section selectedSection;
+        private readonly bool tabletMode;
 
         /// <summary>
         /// Populate the form with the whole checklist depending on the aircraft type.
         /// Will read from the Json deserializer in ChecklistReader.
         /// </summary>
         /// <param name="type">Type of aircraft</param>
-        public ChecklistForm(AircraftType type = AircraftType.Boeing738)
+        /// <param name="tabletMode">If true, better suited for touchscreen use.</param>
+        public ChecklistForm(AircraftType type = AircraftType.Boeing738, bool tabletMode = true)
         {
             InitializeComponent();
+
             checklist = ChecklistReader.ReadChecklist(type);
+            this.tabletMode = tabletMode;
+
+            pnlTouchScreen.Visible = tabletMode;
 
             // set title
             Text = checklist.Name;
@@ -41,12 +47,15 @@ namespace Checklist
         {
             TabPage page = new TabPage(section.Name);
 
-            // only allow vertical scroll
-            page.AutoScroll = false;
-            page.HorizontalScroll.Enabled = false;
-            page.HorizontalScroll.Visible = false;
-            page.HorizontalScroll.Maximum = 0;
-            page.AutoScroll = true;
+            if (!tabletMode)
+            {
+                // only allow vertical scroll
+                page.AutoScroll = false;
+                page.HorizontalScroll.Enabled = false;
+                page.HorizontalScroll.Visible = false;
+                page.HorizontalScroll.Maximum = 0;
+                page.AutoScroll = true;
+            }
 
             section.Page = page;
             section.Form = this;
@@ -111,6 +120,7 @@ namespace Checklist
             progressCount.Visible = !selectedSection.Information;
             separatorCount.Visible = !selectedSection.Information;
             btnComplete.Visible = !selectedSection.Information;
+            btnResetCurrent.Visible = !selectedSection.Information;
 
             UpdateCount();
             DrawSelectedSection();

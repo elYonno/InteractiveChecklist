@@ -61,11 +61,60 @@ namespace Checklist.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to {
+        ///  &quot;Name&quot;: &quot;Boeing 737-800&quot;,
+        ///  &quot;Sections&quot;: [
+        ///    {
+        ///      &quot;Name&quot;: &quot;Performance&quot;,
+        ///      &quot;Information&quot;: true,
+        ///      &quot;Items&quot;: [
+        ///        {
+        ///          &quot;Type&quot;: &quot;Information&quot;,
+        ///          &quot;Challenge&quot;: &quot;Based on ElectroxSoldier PMDG Boeing 737NG Checklist&quot;
+        ///        },
+        ///        {
+        ///          &quot;Type&quot;: &quot;Information&quot;,
+        ///          &quot;Challenge&quot;: &quot;Seating&quot;,
+        ///          &quot;Response&quot;: &quot;160-184&quot;
+        ///        },
+        ///        {
+        ///          &quot;Type&quot;: &quot;Information&quot;,
+        ///          &quot;Challenge&quot;: &quot;Flight Ceiling&quot;,
+        ///          &quot;Response&quot;: &quot;41,000 ft [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string B737_json {
             get {
                 return ResourceManager.GetString("B737.json", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dash {
+            get {
+                object obj = ResourceManager.GetObject("dash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap down {
+            get {
+                object obj = ResourceManager.GetObject("down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap up {
+            get {
+                object obj = ResourceManager.GetObject("up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

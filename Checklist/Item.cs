@@ -114,6 +114,7 @@ namespace Checklist
         /// If true, challenge and response label will be gray
         /// </summary>
         public bool Optional { get; set; } = false;
+        public CheckBox ResponseCheck { get; private set; }
 
         public override void Draw(TableLayoutPanel table, Section section, ref int row, int identation = 0)
         {
@@ -121,7 +122,7 @@ namespace Checklist
 
             if (Optional) ChallengeLabel.ForeColor= Color.Gray;
 
-            CheckBox response = new CheckBox
+            ResponseCheck = new CheckBox
             {
                 AutoSize = true,
                 CheckAlign = ContentAlignment.MiddleRight,
@@ -133,11 +134,11 @@ namespace Checklist
                 Dock = DockStyle.Fill
             };
 
-            ChallengeLabel.Click += (s, e) => response.Checked = !response.Checked;
-            section.AddCheckBox(response, Optional);
+            ChallengeLabel.Click += (s, e) => ResponseCheck.Checked = !ResponseCheck.Checked;
+            section.AddCheckBox(ResponseCheck, Optional);
 
-            if (Optional) response.ForeColor = Color.Gray;
-            table.Controls.Add(response, 1, row);
+            if (Optional) ResponseCheck.ForeColor = Color.Gray;
+            table.Controls.Add(ResponseCheck, 1, row);
 
             DrawNextRow(table, section, ref row, identation);
         }
