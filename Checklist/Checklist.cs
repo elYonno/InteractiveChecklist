@@ -76,7 +76,8 @@ namespace Checklist
             {
                 if (item is CheckItem checkItem)
                 {
-                    checkItem.ResponseCheck.Checked = check;
+                    if (checkItem.ResponseCheck!= null)
+                        checkItem.ResponseCheck.Checked = check;
                 }
             }
         }
