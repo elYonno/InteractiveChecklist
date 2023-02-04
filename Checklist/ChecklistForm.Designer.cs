@@ -70,6 +70,7 @@
             this.sectionsControl.Size = new System.Drawing.Size(866, 418);
             this.sectionsControl.TabIndex = 0;
             this.sectionsControl.SelectedIndexChanged += new System.EventHandler(this.SectionsControl_SelectedIndexChanged);
+            this.sectionsControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_KeyDown);
             // 
             // tabPage1
             // 
@@ -324,6 +325,7 @@
             this.Controls.Add(this.pnlTouchScreen);
             this.Name = "ChecklistForm";
             this.Text = "Checklist";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_KeyDown);
             this.sectionsControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

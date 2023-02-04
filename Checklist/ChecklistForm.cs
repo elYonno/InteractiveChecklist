@@ -200,5 +200,22 @@ namespace Checklist
             selectedSection.ToggleSelection();
             BtnDown_Click(sender, e);
         }
+
+        public void Form_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    BtnUp_Click(sender, e);
+                    break;
+                case Keys.Down:
+                    BtnDown_Click(sender, e);
+                    break;
+                case Keys.Enter:    // same as space
+                case Keys.Space:
+                    BtnSelect_Click(sender, e);
+                    break;
+            }
+        }
     }
 }
