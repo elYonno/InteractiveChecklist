@@ -300,6 +300,7 @@
             this.btnSelect.Size = new System.Drawing.Size(75, 144);
             this.btnSelect.TabIndex = 1;
             this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.BtnSelect_Click);
             // 
             // btnDown
             // 

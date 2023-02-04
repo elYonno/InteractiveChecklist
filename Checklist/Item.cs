@@ -41,7 +41,8 @@ namespace Checklist
 
         public Label GetLowestLabel()
         {
-            return DescriptionLabel?? ChallengeLabel;
+            // if desc not null return it, or return challenge
+            return DescriptionLabel ?? ChallengeLabel;
         }
 
         protected void DrawChallenge(TableLayoutPanel table, ref int row, int identation)
@@ -177,6 +178,11 @@ namespace Checklist
                                               14);
                 ResponseCheck.BackColor = Color.Transparent;
             }
+        }
+
+        public void Toggle()
+        {
+            ResponseCheck.Checked = !ResponseCheck.Checked;
         }
     }
 

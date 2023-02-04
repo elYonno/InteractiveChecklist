@@ -194,5 +194,11 @@ namespace Checklist
             selectedSection.SelectedIndex--;
             selectedSection.Page.ScrollControlIntoView(selectedSection.GetSelectedChallenge(-2));
         }
+
+        private void BtnSelect_Click(object sender, System.EventArgs e)
+        {
+            selectedSection.ToggleSelection();
+            BtnDown_Click(sender, e);
+        }
     }
 }

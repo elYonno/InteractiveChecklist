@@ -83,6 +83,8 @@ namespace Checklist
 
         public Label GetSelectedChallenge(int offset = 0)
         {
+            if (UnravelledItems == null) GenerateUnravelledItems();
+
             int index = SelectedIndex + offset;
             if (index < 0)
                 return UnravelledItems.First.Value.ChallengeLabel;
@@ -107,6 +109,17 @@ namespace Checklist
             }
         }
 
+        public void ToggleSelection()
+        {
+            if (SelectedIndex != -1)
+            {
+                Item item = UnravelledItems.ElementAt(SelectedIndex);
+
+                if (item is CheckItem checkItem)
+                    checkItem.Toggle();
+            }
+        }
+
         private void Mandatory_Checked_Changed(object sender, EventArgs e)
         {
             CheckBox check = (CheckBox)sender;
@@ -117,6 +130,7 @@ namespace Checklist
                 {
                     Page.Text = Name + "✓";
                     SectionDoneLabel.Visible = true;
+                    Page.ScrollControlIntoView(SectionDoneLabel);
                 }
             }
             else
