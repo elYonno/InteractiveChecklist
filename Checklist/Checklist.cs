@@ -18,10 +18,14 @@ namespace Checklist
         public string Name { get; set; }
         public bool Information { get; set; }
         public LinkedList<Item> Items { get; set; }
+        /// <summary>
+        /// All items and sub items in one list
+        /// </summary>
+        public LinkedList<Item> UnravelledItems { get; set; }
 
         // UI
         public bool Drawn { get; set; } = false;
-        public List<CheckBox> CheckItems { get; set; }
+
         private Label sectionDoneLabel;
         public Label SectionDoneLabel
         {
@@ -32,20 +36,32 @@ namespace Checklist
                 sectionDoneLabel.Visible = false;
             }
         }
+
+        private int selectedIndex = -1;
+        public int SelectedIndex
+        {
+            get { return selectedIndex; }
+            set
+            {
+                if (value < -1 || value >= UnravelledItems.Count) return; // new index out of range
+                if (selectedIndex > -1)
+                    UnravelledItems.ElementAt(selectedIndex).Select(false); // remove old select
+
+                if (value > -1 && (value < UnravelledItems.Count || Information))
+                    UnravelledItems.ElementAt(value).Select(true);    // select new index,
+                                                                      // excluding checklist complete
+
+                selectedIndex = value;
+            }
+        }
+
         public TabPage Page { get; set; }
         public ChecklistForm Form { get; set; }
         public int MandatorySize { get; private set; }
         public int MadatoryCheckedCount { get; private set; } = 0;
 
-        public Section()
-        {
-            CheckItems = new List<CheckBox>();
-        }
-
         public void AddCheckBox(CheckBox checkBox, bool optional)
         {
-            CheckItems.Add(checkBox);
-
             // only mandatory check items
             if (!optional)
             {
@@ -56,8 +72,52 @@ namespace Checklist
 
         public void SetChecked(bool check)
         {
-            foreach (CheckBox checkBox in CheckItems)
-                checkBox.Checked = check;
+            foreach (Item item in Items)
+            {
+                if (item is CheckItem checkItem)
+                {
+                    checkItem.ResponseCheck.Checked = check;
+                }
+            }
+        }
+
+        public Label GetSelectedChallenge(int offset = 0)
+        {
+            if (UnravelledItems == null) GenerateUnravelledItems();
+
+            int index = SelectedIndex + offset;
+            if (index < 0)
+                return UnravelledItems.First.Value.ChallengeLabel;
+            else if (index < UnravelledItems.Count)
+                return UnravelledItems.ElementAt(index).ChallengeLabel;
+            else
+                return UnravelledItems.Last.Value.GetLowestLabel();
+        }
+
+        public void GenerateUnravelledItems()
+        {
+            UnravelledItems = new LinkedList<Item>();
+
+            foreach (Item item in Items)
+            {
+                UnravelledItems.AddLast(item);
+                if (item.SubItems != null)
+                {
+                    foreach (Item subitem in item.SubItems)
+                        UnravelledItems.AddLast(subitem);
+                }
+            }
+        }
+
+        public void ToggleSelection()
+        {
+            if (SelectedIndex != -1)
+            {
+                Item item = UnravelledItems.ElementAt(SelectedIndex);
+
+                if (item is CheckItem checkItem)
+                    checkItem.Toggle();
+            }
         }
 
         private void Mandatory_Checked_Changed(object sender, EventArgs e)
@@ -70,6 +130,7 @@ namespace Checklist
                 {
                     Page.Text = Name + "✓";
                     SectionDoneLabel.Visible = true;
+                    Page.ScrollControlIntoView(SectionDoneLabel);
                 }
             }
             else

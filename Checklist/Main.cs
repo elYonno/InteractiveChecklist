@@ -13,6 +13,7 @@ namespace Checklist
     public partial class Main : Form
     {
         private ChecklistForm checklist;
+        private bool tabletMode = true;
 
         public Main()
         {
@@ -41,7 +42,7 @@ namespace Checklist
 
                     if (Enum.IsDefined(typeof(AircraftType), tag))
                     {
-                        checklist = new ChecklistForm((AircraftType) tag);
+                        checklist = new ChecklistForm((AircraftType) tag, tabletMode);
                         checklist.Show();
                     }
                     else
@@ -54,6 +55,16 @@ namespace Checklist
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ToggleMode(object sender, EventArgs e)
+        {
+            if (tabletMode)
+                btnToggleMode.Text = "Desktop Mode";
+            else
+                btnToggleMode.Text = "Tablet Mode";
+
+            tabletMode = !tabletMode;
         }
     }
 }

@@ -47,10 +47,15 @@
             this.separatorCount = new System.Windows.Forms.ToolStripSeparator();
             this.lblCount = new System.Windows.Forms.ToolStripLabel();
             this.progressCount = new System.Windows.Forms.ToolStripProgressBar();
+            this.pnlTouchScreen = new System.Windows.Forms.TableLayoutPanel();
+            this.btnUp = new System.Windows.Forms.Button();
+            this.btnSelect = new System.Windows.Forms.Button();
+            this.btnDown = new System.Windows.Forms.Button();
             this.sectionsControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.pnlTouchScreen.SuspendLayout();
             this.SuspendLayout();
             // 
             // sectionsControl
@@ -62,9 +67,10 @@
             this.sectionsControl.Location = new System.Drawing.Point(0, 0);
             this.sectionsControl.Name = "sectionsControl";
             this.sectionsControl.SelectedIndex = 0;
-            this.sectionsControl.Size = new System.Drawing.Size(827, 418);
+            this.sectionsControl.Size = new System.Drawing.Size(866, 418);
             this.sectionsControl.TabIndex = 0;
             this.sectionsControl.SelectedIndexChanged += new System.EventHandler(this.SectionsControl_SelectedIndexChanged);
+            this.sectionsControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_KeyDown);
             // 
             // tabPage1
             // 
@@ -73,7 +79,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 33);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(819, 381);
+            this.tabPage1.Size = new System.Drawing.Size(858, 381);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -102,7 +108,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(813, 34);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(852, 34);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // checkBox1
@@ -111,7 +117,7 @@
             this.checkBox1.AutoSize = true;
             this.checkBox1.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(754, 3);
+            this.checkBox1.Location = new System.Drawing.Point(793, 3);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(56, 28);
             this.checkBox1.TabIndex = 3;
@@ -121,6 +127,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 3);
             this.label3.Margin = new System.Windows.Forms.Padding(3);
@@ -135,7 +142,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 33);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(819, 381);
+            this.tabPage2.Size = new System.Drawing.Size(858, 381);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -157,7 +164,7 @@
             this.progressCount});
             this.toolStrip1.Location = new System.Drawing.Point(0, 418);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(827, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(866, 32);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -255,15 +262,70 @@
             this.progressCount.Name = "progressCount";
             this.progressCount.Size = new System.Drawing.Size(100, 29);
             // 
+            // pnlTouchScreen
+            // 
+            this.pnlTouchScreen.ColumnCount = 1;
+            this.pnlTouchScreen.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.pnlTouchScreen.Controls.Add(this.btnUp, 0, 0);
+            this.pnlTouchScreen.Controls.Add(this.btnSelect, 0, 1);
+            this.pnlTouchScreen.Controls.Add(this.btnDown, 0, 2);
+            this.pnlTouchScreen.Dock = System.Windows.Forms.DockStyle.Right;
+            this.pnlTouchScreen.Location = new System.Drawing.Point(866, 0);
+            this.pnlTouchScreen.Name = "pnlTouchScreen";
+            this.pnlTouchScreen.RowCount = 3;
+            this.pnlTouchScreen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.pnlTouchScreen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.pnlTouchScreen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.pnlTouchScreen.Size = new System.Drawing.Size(75, 450);
+            this.pnlTouchScreen.TabIndex = 4;
+            // 
+            // btnUp
+            // 
+            this.btnUp.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnUp.BackgroundImage")));
+            this.btnUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnUp.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUp.Location = new System.Drawing.Point(3, 3);
+            this.btnUp.Name = "btnUp";
+            this.btnUp.Size = new System.Drawing.Size(75, 144);
+            this.btnUp.TabIndex = 0;
+            this.btnUp.UseVisualStyleBackColor = true;
+            this.btnUp.Click += new System.EventHandler(this.BtnUp_Click);
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.BackgroundImage = global::Checklist.Properties.Resources.dash;
+            this.btnSelect.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSelect.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSelect.Location = new System.Drawing.Point(3, 153);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(75, 144);
+            this.btnSelect.TabIndex = 1;
+            this.btnSelect.UseVisualStyleBackColor = true;
+            this.btnSelect.Click += new System.EventHandler(this.BtnSelect_Click);
+            // 
+            // btnDown
+            // 
+            this.btnDown.BackgroundImage = global::Checklist.Properties.Resources.down;
+            this.btnDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnDown.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDown.Location = new System.Drawing.Point(3, 303);
+            this.btnDown.Name = "btnDown";
+            this.btnDown.Size = new System.Drawing.Size(75, 144);
+            this.btnDown.TabIndex = 2;
+            this.btnDown.UseVisualStyleBackColor = true;
+            this.btnDown.Click += new System.EventHandler(this.BtnDown_Click);
+            // 
             // ChecklistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 450);
+            this.ClientSize = new System.Drawing.Size(941, 450);
             this.Controls.Add(this.sectionsControl);
             this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.pnlTouchScreen);
             this.Name = "ChecklistForm";
             this.Text = "Checklist";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_KeyDown);
             this.sectionsControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -271,6 +333,7 @@
             this.tableLayoutPanel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.pnlTouchScreen.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,5 +359,9 @@
         private System.Windows.Forms.ToolStripButton btnResetAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnResetCurrent;
+        private System.Windows.Forms.TableLayoutPanel pnlTouchScreen;
+        private System.Windows.Forms.Button btnUp;
+        private System.Windows.Forms.Button btnSelect;
+        private System.Windows.Forms.Button btnDown;
     }
 }

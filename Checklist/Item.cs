@@ -32,17 +32,28 @@ namespace Checklist
         public Label ChallengeLabel { get; protected set; }
         public string Response { get; set; }
         public string Description { get; set; }
+        public Label DescriptionLabel { get; protected set; }
         public List<Item> SubItems { get; set; }
 
         public abstract void Draw(TableLayoutPanel table, Section section, ref int row, int identation = 0);
 
+        public abstract void Select(bool select);
+
+        public Label GetLowestLabel()
+        {
+            // if desc not null return it, or return challenge
+            return DescriptionLabel ?? ChallengeLabel;
+        }
+
         protected void DrawChallenge(TableLayoutPanel table, ref int row, int identation)
         {
+            if (Challenge == null) throw new ArgumentException();
+
             ChallengeLabel = new Label
             {
                 AutoSize = true,
                 Text = Challenge,
-                Margin = new Padding(3 + IDENT_PAD * identation, 3, 3, 3),
+                Margin = new Padding(3 + IDENT_PAD * identation, 3, 0, 3),
                 Anchor = AnchorStyles.Left | AnchorStyles.Top,
                 Font = new Font("Microsoft Sans Serif", 14),
                 TextAlign = ContentAlignment.MiddleLeft,
@@ -81,7 +92,7 @@ namespace Checklist
         {
             if (Description != null)
             {
-                Label description = new Label
+                DescriptionLabel = new Label
                 {
                     MaximumSize = new Size(table.Width * 4, 0),
                     AutoSize = true,
@@ -92,8 +103,8 @@ namespace Checklist
                     ForeColor = Color.Gray
                 };
 
-                table.Controls.Add(description, 0, row);
-                table.SetColumnSpan(description, 2);
+                table.Controls.Add(DescriptionLabel, 0, row);
+                table.SetColumnSpan(DescriptionLabel, 2);
                 row++;
             }
         }
@@ -114,6 +125,7 @@ namespace Checklist
         /// If true, challenge and response label will be gray
         /// </summary>
         public bool Optional { get; set; } = false;
+        public CheckBox ResponseCheck { get; private set; }
 
         public override void Draw(TableLayoutPanel table, Section section, ref int row, int identation = 0)
         {
@@ -121,25 +133,56 @@ namespace Checklist
 
             if (Optional) ChallengeLabel.ForeColor= Color.Gray;
 
-            CheckBox response = new CheckBox
+            ResponseCheck = new CheckBox
             {
                 AutoSize = true,
                 CheckAlign = ContentAlignment.MiddleRight,
                 Text = Response,
-                Margin = new Padding(3, 3, 3, 3),
+                Margin = new Padding(0, 3, 3, 3),
                 Anchor = AnchorStyles.Right | AnchorStyles.Top,
                 Font = new Font("Microsoft Sans Serif", 14),
                 TextAlign = ContentAlignment.MiddleRight,
                 Dock = DockStyle.Fill
             };
 
-            ChallengeLabel.Click += (s, e) => response.Checked = !response.Checked;
-            section.AddCheckBox(response, Optional);
+            ChallengeLabel.Click += (s, e) => ResponseCheck.Checked = !ResponseCheck.Checked;
+            section.AddCheckBox(ResponseCheck, Optional);
 
-            if (Optional) response.ForeColor = Color.Gray;
-            table.Controls.Add(response, 1, row);
+            if (Optional) ResponseCheck.ForeColor = Color.Gray;
+            table.Controls.Add(ResponseCheck, 1, row);
 
             DrawNextRow(table, section, ref row, identation);
+        }
+
+        public override void Select(bool select)
+        {
+            if (select)
+            {
+                ChallengeLabel.Font = new Font("Microsoft Sans Serif",
+                                               16,
+                                               FontStyle.Bold | FontStyle.Italic);
+                ChallengeLabel.BackColor = Color.LightBlue;
+
+                ResponseCheck.Font = new Font("Microsoft Sans Serif",
+                                              16,
+                                              FontStyle.Bold | FontStyle.Italic);
+                ResponseCheck.BackColor = Color.LightBlue;
+            }
+            else
+            {
+                ChallengeLabel.Font = new Font("Microsoft Sans Serif",
+                                               14);
+                ChallengeLabel.BackColor = Color.Transparent;
+
+                ResponseCheck.Font = new Font("Microsoft Sans Serif",
+                                              14);
+                ResponseCheck.BackColor = Color.Transparent;
+            }
+        }
+
+        public void Toggle()
+        {
+            ResponseCheck.Checked = !ResponseCheck.Checked;
         }
     }
 
@@ -149,6 +192,7 @@ namespace Checklist
         /// If true, challenge label will be bold
         /// </summary>
         public bool Instruction { get; set; } = false;
+        public Label ResponseLabel { get; private set; }
 
         public Information() { }
 
@@ -161,7 +205,7 @@ namespace Checklist
 
             if (Response != null)
             {
-                Control response = new Label
+                ResponseLabel = new Label
                 {
                     AutoSize = true,
                     Text = Response,
@@ -170,10 +214,38 @@ namespace Checklist
                     Font = new Font("Microsoft Sans Serif", 14),
                     TextAlign = ContentAlignment.MiddleRight
                 };
-                table.Controls.Add(response, 1, row);
+                table.Controls.Add(ResponseLabel, 1, row);
             }
 
             DrawNextRow(table, section, ref row, identation);
+        }
+
+        public override void Select(bool select)
+        {
+            if (select)
+            {
+                ChallengeLabel.Font = new Font("Microsoft Sans Serif",
+                                               16,
+                                               FontStyle.Bold | FontStyle.Italic);
+
+                if (Response != null)
+                    ResponseLabel.Font = new Font("Microsoft Sans Serif",
+                                                  16,
+                                                  FontStyle.Bold | FontStyle.Italic);
+            }
+            else
+            {
+                if (Instruction)
+                    ChallengeLabel.Font = new Font("Microsoft Sans Serif",
+                                                   14,
+                                                   FontStyle.Bold);
+                else
+                    ChallengeLabel.Font = new Font("Microsoft Sans Serif",
+                                                   14);
+                if (Response != null)
+                    ResponseLabel.Font = new Font("Microsoft Sans Serif",
+                                                  14);
+            }
         }
     }
 
@@ -198,6 +270,22 @@ namespace Checklist
             table.SetColumnSpan(ChallengeLabel, 2);
 
             DrawNextRow(table, section, ref row, identation);
+        }
+
+        public override void Select(bool select)
+        {
+            if (select)
+            {
+                ChallengeLabel.Font = new Font("Microsoft Sans Serif",
+                                               18,
+                                               FontStyle.Bold | FontStyle.Italic);
+            }
+            else
+            {
+                ChallengeLabel.Font = new Font("Microsoft Sans Serif",
+                                               18,
+                                               FontStyle.Bold);
+            }
         }
     }
 }

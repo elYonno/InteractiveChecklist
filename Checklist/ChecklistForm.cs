@@ -8,16 +8,22 @@ namespace Checklist
     {
         private readonly Checklist checklist;
         private Section selectedSection;
+        private readonly bool tabletMode;
 
         /// <summary>
         /// Populate the form with the whole checklist depending on the aircraft type.
         /// Will read from the Json deserializer in ChecklistReader.
         /// </summary>
         /// <param name="type">Type of aircraft</param>
-        public ChecklistForm(AircraftType type = AircraftType.Boeing738)
+        /// <param name="tabletMode">If true, better suited for touchscreen use.</param>
+        public ChecklistForm(AircraftType type = AircraftType.Boeing738, bool tabletMode = true)
         {
             InitializeComponent();
+
             checklist = ChecklistReader.ReadChecklist(type);
+            this.tabletMode = tabletMode;
+
+            pnlTouchScreen.Visible = tabletMode;
 
             // set title
             Text = checklist.Name;
@@ -39,6 +45,8 @@ namespace Checklist
         /// <param name="section">Section to be populated.</param>
         private void CreateSection(Section section)
         {
+            section.GenerateUnravelledItems();
+
             TabPage page = new TabPage(section.Name);
 
             // only allow vertical scroll
@@ -46,6 +54,8 @@ namespace Checklist
             page.HorizontalScroll.Enabled = false;
             page.HorizontalScroll.Visible = false;
             page.HorizontalScroll.Maximum = 0;
+            page.VerticalScroll.Enabled = !tabletMode;
+            page.VerticalScroll.Visible = !tabletMode;
             page.AutoScroll = true;
 
             section.Page = page;
@@ -74,8 +84,13 @@ namespace Checklist
             {
                 // add extra items
                 selectedSection.Items.AddFirst(new Title(selectedSection.Name));
-                Information info = new Information($"{selectedSection.Name} checklist complete.");
-                selectedSection.Items.AddLast(info);
+
+                Information info = null;
+                if (!selectedSection.Information)
+                {
+                    info = new Information($"{selectedSection.Name} checklist complete.");
+                    selectedSection.Items.AddLast(info);
+                }
 
                 // use creted tab page
                 TabPage page = selectedSection.Page;
@@ -92,7 +107,8 @@ namespace Checklist
                     item.Draw(table, selectedSection, ref row);
 
                 // connect checklist complete message
-                selectedSection.SectionDoneLabel = info.ChallengeLabel;
+                if (info != null)
+                    selectedSection.SectionDoneLabel = info.ChallengeLabel;
 
                 // populate tab page
                 page.Controls.Add(table);
@@ -104,6 +120,7 @@ namespace Checklist
 
         private void OnSectionChange()
         {
+            if (selectedSection != null) selectedSection.SelectedIndex = -1;     // reset index
             selectedSection = checklist.Sections[sectionsControl.SelectedIndex];
 
             // hide count when in an information section
@@ -111,9 +128,12 @@ namespace Checklist
             progressCount.Visible = !selectedSection.Information;
             separatorCount.Visible = !selectedSection.Information;
             btnComplete.Visible = !selectedSection.Information;
+            btnResetCurrent.Visible = !selectedSection.Information;
 
             UpdateCount();
             DrawSelectedSection();
+
+            selectedSection.SelectedIndex = 0;
         }
 
         private void BtnPrevCheck_Click(object sender, System.EventArgs e)
@@ -161,6 +181,41 @@ namespace Checklist
         private void BtnResetCurrent_Click(object sender, System.EventArgs e)
         {
             selectedSection.SetChecked(false);
+        }
+
+        private void BtnDown_Click(object sender, System.EventArgs e)
+        {
+            selectedSection.SelectedIndex++;
+            selectedSection.Page.ScrollControlIntoView(selectedSection.GetSelectedChallenge(2));
+        }
+
+        private void BtnUp_Click(object sender, System.EventArgs e)
+        {
+            selectedSection.SelectedIndex--;
+            selectedSection.Page.ScrollControlIntoView(selectedSection.GetSelectedChallenge(-2));
+        }
+
+        private void BtnSelect_Click(object sender, System.EventArgs e)
+        {
+            selectedSection.ToggleSelection();
+            BtnDown_Click(sender, e);
+        }
+
+        public void Form_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.Up:
+                    BtnUp_Click(sender, e);
+                    break;
+                case Keys.Down:
+                    BtnDown_Click(sender, e);
+                    break;
+                case Keys.Enter:    // same as space
+                case Keys.Space:
+                    BtnSelect_Click(sender, e);
+                    break;
+            }
         }
     }
 }
