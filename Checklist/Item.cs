@@ -57,7 +57,7 @@ namespace Checklist
                 ChallengeLabel.Font = new Font(ChallengeLabel.Font.FontFamily, FONT_SIZE);
 
             if (DescriptionLabel != null)
-                DescriptionLabel.Font = new Font(ChallengeLabel.Font.FontFamily, FONT_SIZE);
+                DescriptionLabel.Font = new Font(ChallengeLabel.Font.FontFamily, FONT_SIZE - 3);
 
         }
 
@@ -120,7 +120,7 @@ namespace Checklist
                     Text = Description,
                     Margin = new Padding(3 + IDENT_PAD * identation, 0, 3, 3),
                     Anchor = AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right,
-                    Font = new Font("Microsoft Sans Serif", 11),
+                    Font = new Font("Microsoft Sans Serif", FONT_SIZE - 3),
                     ForeColor = Color.Gray
                 };
 
