@@ -56,6 +56,9 @@ namespace Checklist
             if (ChallengeLabel != null)
                 ChallengeLabel.Font = new Font(ChallengeLabel.Font.FontFamily, FONT_SIZE);
 
+            if (DescriptionLabel != null)
+                DescriptionLabel.Font = new Font(ChallengeLabel.Font.FontFamily, FONT_SIZE);
+
         }
 
         public virtual void Check(bool check)
