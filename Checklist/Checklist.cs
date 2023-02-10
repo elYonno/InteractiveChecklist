@@ -25,7 +25,6 @@ namespace Checklist
 
         // UI
         public bool Drawn { get; set; } = false;
-
         private Label sectionDoneLabel;
         public Label SectionDoneLabel
         {
@@ -72,14 +71,8 @@ namespace Checklist
 
         public void SetChecked(bool check)
         {
-            foreach (Item item in Items)
-            {
-                if (item is CheckItem checkItem)
-                {
-                    if (checkItem.ResponseCheck!= null)
-                        checkItem.ResponseCheck.Checked = check;
-                }
-            }
+            foreach (Item item in UnravelledItems)
+                item.Check(check);
         }
 
         public Label GetSelectedChallenge(int offset = 0)
@@ -119,6 +112,20 @@ namespace Checklist
                 if (item is CheckItem checkItem)
                     checkItem.Toggle();
             }
+        }
+
+        public void UpdateFontSize()
+        {
+            // update title
+            Items.First.Value.UpdateFontSize();
+
+            // update items
+            foreach (Item item in UnravelledItems)
+                item.UpdateFontSize();
+
+            // update section done
+            SectionDoneLabel.Font = new System.Drawing.Font(SectionDoneLabel.Font.FontFamily,
+                                                            Item.FONT_SIZE);
         }
 
         private void Mandatory_Checked_Changed(object sender, EventArgs e)

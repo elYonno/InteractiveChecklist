@@ -1,14 +1,28 @@
 ﻿using System.Windows.Forms;
 using System.Drawing;
 using static System.Collections.Specialized.BitVector32;
+using System.Configuration;
 
 namespace Checklist
 {
     public partial class ChecklistForm : Form
     {
+        private ChecklistSettings settings = new ChecklistSettings();
+        public ChecklistSettings Settings {
+            get
+            {
+                return settings;
+            }
+            set
+            {
+                settings = value;
+                ApplyNewSettings();
+            }
+        }
+
         private readonly Checklist checklist;
+        public bool TabletMode { get; private set; }
         private Section selectedSection;
-        private readonly bool tabletMode;
 
         /// <summary>
         /// Populate the form with the whole checklist depending on the aircraft type.
@@ -21,8 +35,8 @@ namespace Checklist
             InitializeComponent();
 
             checklist = ChecklistReader.ReadChecklist(type);
-            this.tabletMode = tabletMode;
 
+            TabletMode = tabletMode;
             pnlTouchScreen.Visible = tabletMode;
 
             // set title
@@ -47,15 +61,17 @@ namespace Checklist
         {
             section.GenerateUnravelledItems();
 
-            TabPage page = new TabPage(section.Name);
+            TabPage page = new TabPage(section.Name)
+            {
+                AutoScroll = false
+            };
 
             // only allow vertical scroll
-            page.AutoScroll = false;
             page.HorizontalScroll.Enabled = false;
             page.HorizontalScroll.Visible = false;
             page.HorizontalScroll.Maximum = 0;
-            page.VerticalScroll.Enabled = !tabletMode;
-            page.VerticalScroll.Visible = !tabletMode;
+            page.VerticalScroll.Enabled = !TabletMode;
+            page.VerticalScroll.Visible = !TabletMode;
             page.AutoScroll = true;
 
             section.Page = page;
@@ -134,6 +150,15 @@ namespace Checklist
             DrawSelectedSection();
 
             selectedSection.SelectedIndex = 0;
+        }
+
+        private void ApplyNewSettings()
+        {
+            pnlTouchScreen.Dock = (DockStyle)(3 + Settings.Align);
+
+            Item.FONT_SIZE = Settings.FontSize;
+            foreach (Section section in checklist.Sections)
+                section.UpdateFontSize();
         }
 
         private void BtnPrevCheck_Click(object sender, System.EventArgs e)
@@ -220,7 +245,27 @@ namespace Checklist
 
         private void BtnSettings_Click(object sender, System.EventArgs e)
         {
+            UserSettings settings = new UserSettings(this);
+            settings.Show();
+        }
 
+    }
+
+    public class ChecklistSettings
+    {
+        public enum ControlAlign
+        {
+            Left,
+            Right
+        }
+
+        public int FontSize { get; set; }
+        public ControlAlign Align { get; set; }
+
+        public ChecklistSettings(int fontSize = 14, ControlAlign align = ControlAlign.Right)
+        {
+            FontSize = fontSize;
+            Align = align;
         }
     }
 }
