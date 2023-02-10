@@ -297,11 +297,6 @@
           "SubItems": [
             {
               "Type": "CheckItem",
-              "Challenge": "PERF INIT",
-              "Response": "COMPLETED"
-            },
-            {
-              "Type": "CheckItem",
               "Challenge": "DEPARTURE",
               "Response": "COMPLETED"
             },
@@ -309,6 +304,11 @@
               "Type": "CheckItem",
               "Challenge": "LEGS",
               "Response": "NO DISCONTINUITIES"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "PERF INIT",
+              "Response": "COMPLETED"
             },
             {
               "Type": "CheckItem",
