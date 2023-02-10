@@ -44,6 +44,8 @@ namespace Checklist
                     {
                         checklist = new ChecklistForm((AircraftType) tag, tabletMode);
                         checklist.Show();
+                        checklist.FormClosed += Checklist_FormClosed;
+                        Hide();
                     }
                     else
                         throw new Exception("Unkown checklist.");
@@ -54,7 +56,13 @@ namespace Checklist
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Show();
             }
+        }
+
+        private void Checklist_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Show();
         }
 
         private void ToggleMode(object sender, EventArgs e)

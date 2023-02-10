@@ -217,5 +217,10 @@ namespace Checklist
                     break;
             }
         }
+
+        private void BtnSettings_Click(object sender, System.EventArgs e)
+        {
+
+        }
     }
 }

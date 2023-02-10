@@ -41,8 +41,8 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnComplete = new System.Windows.Forms.ToolStripButton();
+            this.btnSettings = new System.Windows.Forms.ToolStripButton();
             this.btnResetAll = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.btnResetCurrent = new System.Windows.Forms.ToolStripButton();
             this.separatorCount = new System.Windows.Forms.ToolStripSeparator();
             this.lblCount = new System.Windows.Forms.ToolStripLabel();
@@ -51,6 +51,7 @@
             this.btnUp = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.sectionsControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -153,11 +154,12 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnPrevCheck,
             this.btnNextChecklist,
-            this.toolStripSeparator1,
+            this.toolStripSeparator3,
             this.toolStripSeparator2,
             this.btnComplete,
+            this.btnSettings,
+            this.toolStripSeparator1,
             this.btnResetAll,
-            this.toolStripSeparator3,
             this.btnResetCurrent,
             this.separatorCount,
             this.lblCount,
@@ -214,6 +216,16 @@
             this.btnComplete.Text = "Complete Section";
             this.btnComplete.Click += new System.EventHandler(this.BtnComplete_Click);
             // 
+            // btnSettings
+            // 
+            this.btnSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnSettings.Image = global::Checklist.Properties.Resources.settings;
+            this.btnSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnSettings.Name = "btnSettings";
+            this.btnSettings.Size = new System.Drawing.Size(23, 29);
+            this.btnSettings.Text = "Settings";
+            this.btnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
+            // 
             // btnResetAll
             // 
             this.btnResetAll.BackColor = System.Drawing.Color.Maroon;
@@ -227,11 +239,6 @@
             this.btnResetAll.Text = "Reset All";
             this.btnResetAll.ToolTipText = "ResetAll";
             this.btnResetAll.Click += new System.EventHandler(this.BtnResetAll_Click);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
             // 
             // btnResetCurrent
             // 
@@ -315,6 +322,11 @@
             this.btnDown.UseVisualStyleBackColor = true;
             this.btnDown.Click += new System.EventHandler(this.BtnDown_Click);
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
+            // 
             // ChecklistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -324,7 +336,10 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.pnlTouchScreen);
             this.Name = "ChecklistForm";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Checklist";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_KeyDown);
             this.sectionsControl.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -357,11 +372,12 @@
         private System.Windows.Forms.ToolStripButton btnComplete;
         private System.Windows.Forms.ToolStripSeparator separatorCount;
         private System.Windows.Forms.ToolStripButton btnResetAll;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton btnResetCurrent;
         private System.Windows.Forms.TableLayoutPanel pnlTouchScreen;
         private System.Windows.Forms.Button btnUp;
         private System.Windows.Forms.Button btnSelect;
         private System.Windows.Forms.Button btnDown;
+        private System.Windows.Forms.ToolStripButton btnSettings;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }

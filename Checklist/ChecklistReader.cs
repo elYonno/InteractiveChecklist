@@ -31,11 +31,11 @@ namespace Checklist
                     resourceName = Resources.B737_json;
                     break;
                 case AircraftType.AirbusA32NX:
-                    return "";
+                    throw new NotImplementedException("This aircraft is not implemented yet.");
                 case AircraftType.AnalogKingAir:
-                    return "";
+                    throw new NotImplementedException("This aircraft is not implemented yet.");
                 default:
-                    return "";
+                    throw new Exception("Unkown aircraft.");
             }
 
             return resourceName;
