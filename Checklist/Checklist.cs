@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -114,18 +115,27 @@ namespace Checklist
             }
         }
 
+        [MethodImpl(MethodImplOptions.NoOptimization)]
         public void UpdateFontSize()
         {
-            // update title
-            Items.First.Value.UpdateFontSize();
+            if (Drawn)
+            {
+                // update title
+                Items.First.Value.UpdateFontSize();
 
-            // update items
-            foreach (Item item in UnravelledItems)
-                item.UpdateFontSize();
+                // update items
+                foreach (Item item in UnravelledItems)
+                {
+                    item.UpdateFontSize();
+                }
 
-            // update section done
-            SectionDoneLabel.Font = new System.Drawing.Font(SectionDoneLabel.Font.FontFamily,
-                                                            Item.FONT_SIZE);
+                // update section done
+                if (SectionDoneLabel != null)
+                {
+                    SectionDoneLabel.Font = new System.Drawing.Font(SectionDoneLabel.Font.FontFamily,
+                                                                    Item.FONT_SIZE);
+                }
+            }
         }
 
         private void Mandatory_Checked_Changed(object sender, EventArgs e)
