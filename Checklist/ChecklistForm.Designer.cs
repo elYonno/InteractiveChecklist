@@ -38,10 +38,11 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnPrevCheck = new System.Windows.Forms.ToolStripButton();
             this.btnNextChecklist = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnComplete = new System.Windows.Forms.ToolStripButton();
             this.btnSettings = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnResetAll = new System.Windows.Forms.ToolStripButton();
             this.btnResetCurrent = new System.Windows.Forms.ToolStripButton();
             this.separatorCount = new System.Windows.Forms.ToolStripSeparator();
@@ -51,7 +52,6 @@
             this.btnUp = new System.Windows.Forms.Button();
             this.btnSelect = new System.Windows.Forms.Button();
             this.btnDown = new System.Windows.Forms.Button();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.sectionsControl.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -193,10 +193,10 @@
             this.btnNextChecklist.Text = "Next Checklist";
             this.btnNextChecklist.Click += new System.EventHandler(this.BtnNextChecklist_Click);
             // 
-            // toolStripSeparator1
+            // toolStripSeparator3
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
             // 
             // toolStripSeparator2
             // 
@@ -225,6 +225,11 @@
             this.btnSettings.Size = new System.Drawing.Size(23, 29);
             this.btnSettings.Text = "Settings";
             this.btnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
             // 
             // btnResetAll
             // 
@@ -322,11 +327,6 @@
             this.btnDown.UseVisualStyleBackColor = true;
             this.btnDown.Click += new System.EventHandler(this.BtnDown_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 32);
-            // 
             // ChecklistForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,8 +335,8 @@
             this.Controls.Add(this.sectionsControl);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.pnlTouchScreen);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ChecklistForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Checklist";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
