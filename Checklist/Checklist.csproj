@@ -138,6 +138,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\A32N.json" />
     <None Include="Resources\B737.json" />
   </ItemGroup>
   <ItemGroup>

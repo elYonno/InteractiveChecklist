@@ -1,0 +1,1194 @@
+﻿{
+  "Name": "Airbus A320 NEO",
+  "Sections": [
+    {
+      "Name": "Performance",
+      "Information": true,
+      "Items": [
+        {
+          "Type": "Information",
+          "Challenge": "Based on JayDee FBW A32NX Checklist"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Seating",
+          "Response": "165-195"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Flight Ceiling",
+          "Response": "39,800 ft"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Range",
+          "Response": "3,500 nm"
+        },
+        {
+          "Type": "Title",
+          "Challenge": "Weight Limitations"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Maximum Takeoff Weight",
+          "Response": "79,000 kg"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Maximum Landing Weight",
+          "Response": "67,400 kg"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Maximum Zero Fuel Weight",
+          "Response": "64,300 kg"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "Maximum Fuel Capacity",
+          "Response": "21,560 kg"
+        }
+      ]
+    },
+    {
+      "Name": "Cockpit Preparation",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "EFB",
+          "Response": "ON",
+          "SubItems": [
+            {
+              "Type": "Information",
+              "Challenge": "SETTINGS",
+              "Response": "SET",
+              "Description": "Throttlle Calibration, Simbrief & Hoppie ID, Navigraph",
+              "Optional": true
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "DASHBOARD",
+              "Response": "LOAD SIMBRIEF",
+              "Optional": true
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "GROUND CONNECTIONS",
+              "Response": "SET AS DESIRED",
+              "Description": "EFB → GROUND → SERVICES",
+              "Optional": true
+            }
+          ]
+        },
+        {
+          "Type": "Title",
+          "Challenge": "Power Up & Overhead Panel"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PARKING BRAKE",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BATTERY 1 & 2",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "EXTERNAL POWER",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "NAV & LOGO LIGHTS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "API FIRE PUSHBUTTON",
+          "Response": "IN & GUARDED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU FIRE TEST",
+          "Response": "TEST"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU",
+          "Response": "START",
+          "Description": "APU MASTER: ON\nafter min 3 sec. APU START: ON\nWAIT FOR APU AVAIL"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "EXTERNAL POWER",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "COCKPIT LIGHTS",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU BLEED",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ADIRS",
+          "Response": "ALL 3 NAV"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FUEL PUMPS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "OXYGEN CREW SUPPLY",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "OVER HEAD PANEL",
+          "Response": "CHECK NO WHITE LIGHTS"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "EMERGENCY EXIT LIGHTS",
+          "Response": "ARM"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "NO SMOKING",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE 1 & 2 FIRE PUSHBUTTON",
+          "Response": "IN & GUARDED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AGENT 1 & 2 LIGHTS",
+          "Response": "CHECK OUT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "EMG 1 & 2 TEST PUSHBUTTON",
+          "Response": "PRESS"
+        },
+        {
+          "Type": "Title",
+          "Challenge": "MCDU Setup"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "INIT DATA REQ",
+          "Response": "SET",
+          "Description": "[MCDU MENU] → ATSU → AOC MENU → INIT/PRES"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "INIT/REQUEST",
+          "Response": "SET",
+          "Description": "[INIT]"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "IRS INIT",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "WX",
+          "Response": "REQUEST",
+          "Description": "[MCDU MENU] → ATSU → AOC MENU → WX REQUEST",
+          "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ATIS",
+          "Response": "REQUEST",
+          "Description": "[MCDU MENU] → ATSU → AOC MENU → ATIS",
+          "Optional": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "START BOARDING/FUELLING",
+          "Response": "START",
+          "Description": "EFB → GROUND → PAYLOAD/FUEL"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "[F-PLN]",
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "VERIFY ENROUTE WAYPOINTS",
+              "Response": "DONE"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "ORIGIN AIRPORT",
+              "Response": "ENTER RWY & SID"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "DESTINATION AIRPORT",
+              "Response": "ENTER STAR & APPROACH"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "CLEAR DISCONTINUITIES",
+              "Response": "DONE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Boarding Complete",
+      "Items": [
+        {
+          "Type": "Information",
+          "Challenge": "[INIT] → PAGE 2",
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "ZFW/ZFWCG",
+              "Response": "ENTERED"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "BLOCK FUEL",
+              "Response": "ENTERED ACCORDING TO OFP"
+            }
+          ]
+        },
+        {
+          "Type": "Information",
+          "Challenge": "[PERF]",
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "FLAPS/THS",
+              "Response": "AS CALCULATED",
+              "Description": "1/UP0.1"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "FLEX TO TEMP",
+              "Response": "AS CALCULATED",
+              "Description": "50"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "TRANS ALT",
+              "Response": "SET"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "V1/VR/V2",
+              "Response": "SET"
+            }
+          ]
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ATC CLEARANCE",
+          "Response": "DONE",
+          "Description": "HOPPIE ACARS [MCDU MENU] → ATSU → ATC MENU → DEPART REQ"
+        },
+        {
+          "Type": "Title",
+          "Challenge": "GLARE SHIELD, MAIN PANEL & PEDESTAL"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ALTIMETER/BARO REF (EFIS & STBY)",
+          "Response": "SET LOCAL"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FD BUTTON",
+          "Response": "CHECK ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "EFIS MODES & LIGHTING",
+          "Response": "AS REQ"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FCU SPD",
+          "Response": "CHECK DASHED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FCU HDG",
+          "Response": "CHECK DASHED/RWY HDG"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FCU ALT SEL",
+          "Response": "SET INITIALLY CLEARED ALTITUDE"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "WX RADAR",
+          "Response": "CHECK OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "COCKPIT DOOR",
+          "Response": "LOCKED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "THROTTLE",
+          "Response": "CHECK IDLE",
+          "Description": "Calibrate if necessary"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "SQUAWK CODE",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TRANSPONDER/TCAS",
+          "Response": "SET / AUTO & STBY"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TAKEOFF BRIEFING",
+          "Response": "PERFORMED",
+          "Optiona": true
+        }
+      ]
+    },
+    {
+      "Name": "Pushback & Engine Start",
+      "Items": [
+        {
+          "Type": "Information",
+          "Challenge": "EFB",
+          "Response": "CLOSE DOORS / REMOVE GND CONNECTIONS"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PARKING BRAKE",
+          "Response": "VERIFY SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "WINDOWS",
+          "Response": "CLOSED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "EXTERNAL POWER",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU BLEED",
+          "Response": "VERIFY ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "SEAT BELT SIGNS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BEACON",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ATTACH PUSHBACK",
+          "Response": "DONE",
+          "Description": "EFB → GROUND → PUSHBACK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ATC REQUEST PUSHBACK",
+          "Response": "DONE"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PUSHBACK",
+          "Response": "START"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENG MODE SELECTOR",
+          "Response": "IGN/START"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENG 2 MASTER SWITCH",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE PARAMETERS",
+          "Response": "MONITOR",
+          "Description": "N1 ~ 20 %, N2 ~ 60%, EGT ~ 400° - 500 °\nFF ~ 280 kg/h\nENG AVAIL MESSAGE"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENG 1 MASTER SWITCH",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE PARAMETERS",
+          "Response": "MONITOR"
+        }
+      ]
+    },
+    {
+      "Name": "After Start & Before Taxi",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENG MODE SELECTOR",
+          "Response": "AS REQ / NORM"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU BLEED",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU MASTER",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE & WING ANTI ICE",
+          "Response": "AS REQ"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTO BRAKE",
+          "Response": "MAX"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLAPS",
+          "Response": "SET FOR TAKEOFF / FLAPS 1"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "GROUND SPOILERS",
+          "Response": "ARM"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RUDDER & AILERON TRIM",
+          "Response": "ZERO"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PITCH TRIM",
+          "Response": "AS CALCULATED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLIGHT CONTROLS",
+          "Response": "FREE & FULL MOVEMENT",
+          "Description": "CHECK ECAM"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "WEATHER RADAR",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PRED WINDSHEAR",
+          "Response": "AUTO"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TERRAIN ON ND",
+          "Response": "ON"
+        }
+      ]
+    },
+    {
+      "Name": "Taxi",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "ATC REQUEST TAXI",
+          "Response": "DONE"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "STROBES",
+          "Response": "AUTO"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "NOSE LIGHTS",
+          "Response": "TAXI"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RWY TURN OFF LIGHTS",
+          "Response": "AS REQ / ON AT NIGHT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ELAPSED TIME",
+          "Response": "START"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BRAKE CHECK",
+          "Response": "PERFORMED"
+        }
+      ]
+    },
+    {
+      "Name": "Before Takeoff",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "CABIN CREW",
+          "Response": "SECURE FOR TAKEOFF",
+          "Description": "ATTEND BUTTON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TO CONFIG TEST",
+          "Response": "PUSH"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ATC TAKEOFF CLEARANCE",
+          "Response": "DONE"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENG MODE SELECTOR",
+          "Response": "AS REQ",
+          "Description": "USED WHEN WATER ON RWY / HEAVY RAIN"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LANDING LIGHTS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "STROBE LIGHTS",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "NOSE LIGHT",
+          "Response": "TAKEOFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TCAS MODE",
+          "Response": "TA/RA"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PACK 1 & 2",
+          "Response": "AS REQUIRED"
+        }
+      ]
+    },
+    {
+      "Name": "After Takeoff & Climb",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "LANDING GEAR",
+          "Response": "UP"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLAPS",
+          "Response": "UP AT S SPEED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "THRUST",
+          "Response": "CLB"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "GROUND SPOILERS",
+          "Response": "DISARM"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PACK 1 & 2",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE & WING ANTI-ICE",
+          "Response": "AS REQ"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE MODE SELECTOR",
+          "Response": "AS REQ"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "PASSING TRANSITION ALTITUDE",
+          "Instruction": true,
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "ALTIMETER",
+              "Response": "SET STD"
+            }
+          ]
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PASSING 10,000 FT",
+          "Instruction": true,
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "LANDING LIGHTS",
+              "Response": "OFF & RETRACT"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "NOSE LIGHT",
+              "Response": "OFF"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "TERRAIN ON ND",
+              "Response": "OFF"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Descent Prep.",
+      "Items": [
+        {
+          "Type": "Information",
+          "Challenge": "30 NM BEFORE T.O.D",
+          "Instruction": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ECAM CRUISE PAGE",
+          "Response": "CHECK LDG ELEV AUTO"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "WX AND ATIS",
+          "Response": "OBTAINED",
+          "Optional": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "[F-PLN]",
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "ARRIVAL PAGE",
+              "Response": "COMPLETED"
+            }
+          ]
+        },
+        {
+          "Type": "Information",
+          "Challenge": "[PERF]",
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "PERF DES PAGE",
+              "Response": "CHECK"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "APPROACH PAGE",
+              "Response": "COMPLETED",
+              "Description": "QNH, TEMP & WIND\nTRANS FL\nBARO / MINIMUMS"
+            }
+          ]
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTO BRAKE",
+          "Response": "AS REQ / MED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PASSENGER SIGNS",
+          "Response": "AS REQ"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FCU ALT SELECT",
+          "Response": "AS CLEARED"
+        }
+      ]
+    },
+    {
+      "Name": "Descent",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE & WING ANTI-ICE",
+          "Response": "AS REQ"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE MODE SELECTOR",
+          "Response": "AS REQ"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "PASSING 10,000 FT",
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "LANDING LIGHTS",
+              "Response": "ON"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "NOSE LIGHTS",
+              "Response": "TAKEOFF"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "TERRAIN ON ND",
+              "Response": "AS REQ"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "PASSENGER SIGNS",
+              "Response": "ON"
+            }
+          ]
+        },
+        {
+          "Type": "Information",
+          "Challenge": "PASSING TRANSITION LEVEL",
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "ALTIMETER",
+              "Response": "SET LOCAL"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "Initial Approach",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "LS BUTTON",
+          "Response": "CHECK ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENG MODE SELECTOR",
+          "Response": "AS REQ"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTO BRAKES",
+          "Response": "CHECK SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ALTIMETER/BARO",
+          "Response": "CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "MINIMUMS",
+          "Response": "CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TCAS",
+          "Response": "AS REQ / TA"
+        }
+      ]
+    },
+    {
+      "Name": "Approach",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "MCDU APPROACH PHASE",
+          "Response": "CHECK / ACTIVATE"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "FLAPS 1",
+          "Instruction": true,
+          "Descriptions": "AT GREEN DOT"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "MCP APPR MODE",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "SET 2ND AP",
+          "Instruction": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "MISSED APPROACH ALTITUDE",
+          "Response": "SET"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "GEAR DOWN",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "FLAPS 3",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "FLAPS FULL",
+          "Instruction": true
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "CABIN CREW",
+          "Response": "ADVISED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTOTHRUST",
+          "Response": "SPEED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTOBRAKE",
+          "Response": "LOW or MED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ECAM MEMO",
+          "Response": "LANDING NO BLUE"
+        }
+      ]
+    },
+    {
+      "Name": "Go Arround Missed Apch.",
+      "Items": [
+        {
+          "Type": "Information",
+          "Challenge": "THR LVR TO/GA",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "ROTATE",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "FLAPS UP ONE NOTCH",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "RETRACT LANDING GEAR",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "SET AP MODI",
+          "Instruction": true
+        },
+        {
+          "Type": "Title",
+          "Challenge": "Thrust Reduction Altitude",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "LVR TO CLB",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "FLAPS 1 AT F SPEED",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "FLAPS UP AT S SPEED",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "SPEED TARGET GREEN DOT",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "DISARM SPOILERS",
+          "Instruction": true
+        }
+      ]
+    },
+    {
+      "Name": "After Landing",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "GROUND SPOILERS",
+          "Response": "DISARM/RETRACT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FD",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TERRAIN ON ND",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "WX RADAR",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PRED WINDSHEAR",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FLAPS",
+          "Response": "RETRACT"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TCAS",
+          "Response": "STBY"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "AUTO BRAKE",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU",
+          "Response": "START"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ANTI-ICE",
+          "Response": "AS REQUIRED"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BREAK TEMPERATURE",
+          "Response": "CHECK"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "LANDING LIGHTS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "STROBE LIGHTS",
+          "Response": "OFF",
+          "Description": "WHEN EXITED RWY"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "NOSE LIGHTS",
+          "Response": "TAXI"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "RWY TURN OFF LIGHTS",
+          "Response": "AS REQ / ON AT NIGHT"
+        }
+      ]
+    },
+    {
+      "Name": "Parking / Gate",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "PARKING BRAKE",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TAXI LIGHTS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ANTI-ICE",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU BLEED",
+          "Response": "ON"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ELAPSED TIMER",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ENGINE MASTER 1 & 2",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "SEATBELT SIGNS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BEACON",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "FUEL PUMPS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "TRANSPONDER / TCAS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BRAKE FAN",
+          "Response": "OFF"
+        },
+        {
+          "Type": "Information",
+          "Challenge": "EFB",
+          "SubItems": [
+            {
+              "Type": "CheckItem",
+              "Challenge": "GROUND CONNECTIONS",
+              "Response": "ESTABLISH"
+            },
+            {
+              "Type": "CheckItem",
+              "Challenge": "DEBOARD PLANE",
+              "Response": "START"
+            }
+          ]
+        },
+        {
+          "Type": "Information",
+          "Challenge": "NEW FLIGHT",
+          "Response": "RESTART CHECKLIST",
+          "Instruction": true
+        },
+        {
+          "Type": "Information",
+          "Challenge": "LAST FLIGHT OF THE DAY",
+          "Response": "CONTINUE SHUTDOWN CHECKLIST",
+          "Instruction": true
+        }
+      ]
+    },
+    {
+      "Name": "Shutdown",
+      "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "PARKING BRAKE",
+          "Response": "SET"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "OXYGEN CREW SUPPLY",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "ADIRS",
+          "Response": "ALL 3 OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "EXTERIOR LIGHTS",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU BLEED",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "APU MASTER SWITCH",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "EMER EXIT LT",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "NO SMOKING",
+          "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "EXT PWR",
+          "Response": "AS REQ"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "BAT 1 & 2",
+          "Response": "OFF"
+        }
+      ]
+    }
+  ]
+}

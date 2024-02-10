@@ -145,11 +145,6 @@
         },
         {
           "Type": "CheckItem",
-          "Challenge": "SEAT-BELTS",
-          "Response": "AUTO/ON"
-        },
-        {
-          "Type": "CheckItem",
           "Challenge": "POSITION LIGHTS",
           "Response": "STEADY"
         },
@@ -276,6 +271,11 @@
     {
       "Name": "Boarding Complete",
       "Items": [
+        {
+          "Type": "CheckItem",
+          "Challenge": "SEAT-BELTS",
+          "Response": "AUTO/ON AFTER FUELLING"
+        },
         {
           "Type": "Information",
           "Challenge": "REQUEST ATC CLEARANCE",

@@ -62,6 +62,36 @@ namespace Checklist.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to {
+        ///  &quot;Name&quot;: &quot;Airbus A320 NEO&quot;,
+        ///  &quot;Sections&quot;: [
+        ///    {
+        ///      &quot;Name&quot;: &quot;Performance&quot;,
+        ///      &quot;Information&quot;: true,
+        ///      &quot;Items&quot;: [
+        ///        {
+        ///          &quot;Type&quot;: &quot;Information&quot;,
+        ///          &quot;Challenge&quot;: &quot;Based on JayDee FBW A32NX Checklist&quot;
+        ///        },
+        ///        {
+        ///          &quot;Type&quot;: &quot;Information&quot;,
+        ///          &quot;Challenge&quot;: &quot;Seating&quot;,
+        ///          &quot;Response&quot;: &quot;165-195&quot;
+        ///        },
+        ///        {
+        ///          &quot;Type&quot;: &quot;Information&quot;,
+        ///          &quot;Challenge&quot;: &quot;Flight Ceiling&quot;,
+        ///          &quot;Response&quot;: &quot;39,800 ft&quot;
+        ///        },
+        ///  [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string A32N_json {
+            get {
+                return ResourceManager.GetString("A32N.json", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {
         ///  &quot;Name&quot;: &quot;Boeing 737-800&quot;,
         ///  &quot;Sections&quot;: [
         ///    {
