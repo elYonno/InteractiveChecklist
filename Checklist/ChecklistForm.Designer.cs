@@ -281,8 +281,8 @@
             this.pnlTouchScreen.Controls.Add(this.btnUp, 0, 0);
             this.pnlTouchScreen.Controls.Add(this.btnSelect, 0, 1);
             this.pnlTouchScreen.Controls.Add(this.btnDown, 0, 2);
-            this.pnlTouchScreen.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlTouchScreen.Location = new System.Drawing.Point(866, 0);
+            this.pnlTouchScreen.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlTouchScreen.Location = new System.Drawing.Point(0, 0);
             this.pnlTouchScreen.Name = "pnlTouchScreen";
             this.pnlTouchScreen.RowCount = 3;
             this.pnlTouchScreen.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));

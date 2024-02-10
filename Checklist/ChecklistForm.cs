@@ -262,7 +262,7 @@ namespace Checklist
         public int FontSize { get; set; }
         public ControlAlign Align { get; set; }
 
-        public ChecklistSettings(int fontSize = 14, ControlAlign align = ControlAlign.Right)
+        public ChecklistSettings(int fontSize = 14, ControlAlign align = ControlAlign.Left)
         {
             FontSize = fontSize;
             Align = align;
