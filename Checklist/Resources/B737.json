@@ -732,6 +732,12 @@
           "Type": "CheckItem",
           "Challenge": "CLOCK ET",
           "Response": "START"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PACKS",
+          "Response": "AS REQUIRED",
+          "Optional":  true
         }
       ]
     },
@@ -747,6 +753,11 @@
           "Type": "CheckItem",
           "Challenge": "AUTO BRAKE",
           "Response": "OFF"
+        },
+        {
+          "Type": "CheckItem",
+          "Challenge": "PACKS",
+          "Response": "ON"
         },
         {
           "Type": "CheckItem",
