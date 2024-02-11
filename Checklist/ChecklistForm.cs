@@ -230,11 +230,19 @@ namespace Checklist
         {
             switch (e.KeyCode)
             {
+                case Keys.W:
                 case Keys.Up:
                     BtnUp_Click(sender, e);
                     break;
+                case Keys.S:
                 case Keys.Down:
                     BtnDown_Click(sender, e);
+                    break;
+                case Keys.A:
+                    BtnPrevCheck_Click(sender, e);
+                    break;
+                case Keys.D:
+                    BtnNextChecklist_Click(sender, e);
                     break;
                 case Keys.Enter:    // same as space
                 case Keys.Space:
