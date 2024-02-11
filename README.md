@@ -6,10 +6,16 @@ An interactive checklist made for Windows. Compatible with Windows tablets when 
 Current aircrafts:
 
 - PMDG 737-800, based on ElectroxSoldier's 737 checklist
+- A320 NEO, based on JayDee's A32NX checklist
 
 FlightSim upload: https://flightsim.to/file/49323/interactive-checklist
 
 ## Changelog
+
+### 1.3.0
+- Added A320 Neo checklist
+- Added B737 packs operation in takeoff checklist
+- WASD shortcuts to move around the checklist
 
 ### 1.2.0
 - Add settings to adjust font and position of tablet controller.
